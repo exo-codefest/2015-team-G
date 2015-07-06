@@ -1,7 +1,7 @@
 Codefest 2015 team G repository
 ===========
 
-# The team G
+# The team G - 4.PINS
 
 
 TEAM MEMBER | EXO TEAM
