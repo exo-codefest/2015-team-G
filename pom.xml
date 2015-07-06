@@ -50,6 +50,9 @@
     </scm>
     <properties>
         <exoplatform.version>4.2.0</exoplatform.version>
+        <juzu.version>1.0.0</juzu.version>
+        <javax.inject.version>1</javax.inject.version>
+        <javax.portlet.version>2.0</javax.portlet.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -60,6 +63,42 @@
                 <version>${exoplatform.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.juzu</groupId>
+                <artifactId>juzu-core</artifactId>
+                <version>${juzu.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.juzu</groupId>
+                <artifactId>juzu-core</artifactId>
+                <version>${juzu.version}</version>
+                <classifier>sources</classifier>
+            </dependency>
+            <dependency>
+                <groupId>org.juzu</groupId>
+                <artifactId>juzu-plugins-less</artifactId>
+                <version>${juzu.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.juzu</groupId>
+                <artifactId>juzu-plugins-portlet</artifactId>
+                <version>${juzu.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.juzu</groupId>
+                <artifactId>juzu-plugins-upload</artifactId>
+                <version>${juzu.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.inject</groupId>
+                <artifactId>javax.inject</artifactId>
+                <version>${javax.inject.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.portlet</groupId>
+                <artifactId>portlet-api</artifactId>
+                <version>${javax.portlet.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

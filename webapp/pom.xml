@@ -32,4 +32,42 @@
   <packaging>war</packaging>
   <name>Codefest 2015 - Team G Addon - Webapp</name>
   <description>Codefest 2015 - Team G Addon - A portlet or any webapp</description>
+  <dependencies>
+    <dependency>
+        <groupId>org.juzu</groupId>
+        <artifactId>juzu-core</artifactId>
+        <scope>provided</scope>
+    </dependency>
+    <dependency>
+        <groupId>org.juzu</groupId>
+        <artifactId>juzu-core</artifactId>
+        <classifier>sources</classifier>
+        <scope>provided</scope>
+    </dependency>
+    <dependency>
+        <groupId>org.juzu</groupId>
+        <artifactId>juzu-plugins-less</artifactId>
+        <scope>provided</scope>
+    </dependency>
+    <dependency>
+        <groupId>org.juzu</groupId>
+        <artifactId>juzu-plugins-portlet</artifactId>
+        <scope>provided</scope>
+    </dependency>
+    <dependency>
+        <groupId>org.juzu</groupId>
+        <artifactId>juzu-plugins-upload</artifactId>
+        <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>javax.inject</groupId>
+      <artifactId>javax.inject</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>javax.portlet</groupId>
+      <artifactId>portlet-api</artifactId>
+      <scope>provided</scope>
+    </dependency>
+  </dependencies>
 </project>

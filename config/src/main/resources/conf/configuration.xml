@@ -35,7 +35,7 @@
             <set-method>registerChangePlugin</set-method>
             <!-- The full qualified name of the PortalContainerDefinitionChangePlugin -->
             <type>org.exoplatform.container.definition.PortalContainerDefinitionChangePlugin</type>
-            <priority>200</priority>
+            <priority>5001</priority>
             <init-params>
                 <value-param>
                     <name>apply.default</name>
@@ -54,7 +54,7 @@
                         </field>
                         <!-- The name of the target dependency -->
                         <field name="target">
-                            <string>platform-extension</string>
+                            <string>acme-intranet</string>
                         </field>
                     </object>
                 </object-param>
