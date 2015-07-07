@@ -39,4 +39,9 @@ $(document).ready(function() {
   });
 
   $('svg').appendTo('#mindmap-container');
+  
+  //ignore default settings
+  window.oncontextmenu = function() {
+        return false;
+};
 });
