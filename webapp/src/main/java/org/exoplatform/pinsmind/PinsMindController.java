@@ -32,6 +32,9 @@ import juzu.template.Template;
 
 import javax.inject.Inject;
 
+import org.exoplatform.pinsmind.models.Idea;
+import org.exoplatform.pinsmind.services.IdeaService;
+
 public class PinsMindController {
 
   @Inject
@@ -41,6 +44,9 @@ public class PinsMindController {
   @Inject
   @Path("idea.gtmpl")
   Template ideaPage;
+  
+  @Inject
+  IdeaService ideaService;
 
   
   @View
@@ -51,7 +57,8 @@ public class PinsMindController {
   @View
   @Route("/idea/{id}")
   public Response.Content show(String id) {
-    return ideaPage.with().set("id", id).ok();
+    Idea idea = ideaService.getIdea(id);
+    return ideaPage.with().set("idea", idea).ok();
   }
 
   @Resource

@@ -1,10 +1,12 @@
 #{decorate path=layout.gtmpl/}
 #{title value=Idea/}
-#{param name=id/}
-<a href="@{PinsMindController.index()}">Back</a>
-<a class="btn-pin" href="@{PinsMindController.pin(id='codefest15')}">Pins</a>
+#{param name=idea/}
+<a class="btn btn-back" id="btn-back" href="@{PinsMindController.index()}"><<Back</a>
+<a class="btn btn-pin" id="btn-pin"><3 Pins</a>
 
-<%if (id == 'codefest15') {%>
+<%
+String id = idea.getName();
+if (id == 'codefest15') {%>
 
 <img src="http://saratoolemiller.files.wordpress.com/2012/02/mindmap2.jpg"/>
 

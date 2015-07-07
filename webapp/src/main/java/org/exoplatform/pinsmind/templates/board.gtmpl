@@ -1,6 +1,6 @@
 #{decorate path=layout.gtmpl/}
 #{title value=Mindboard/}
-
+<span class="btn">+ New PinsMind</span>
 <h5 class="title">Hot idea</h5>
 <a href="@{PinsMindController.show(id='codefest15')}" class="progress">Codefest15</a>
 <a href="@{PinsMindController.show(id='mindmap')}" class="progress">Mind-map</a>

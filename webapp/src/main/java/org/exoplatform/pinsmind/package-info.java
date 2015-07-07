@@ -8,7 +8,7 @@
     @Script(value = "raphael-min.js", id = "raphaelmin", depends = {"jquery", "jqueryui"}),
     @Script(value = "js-mindmap.js", id = "jsmindmap", depends = {"jquery", "jqueryui","raphaelmin"}),
     @Script(value = "script.js", id = "idea", depends = {"jquery", "jqueryui","raphaelmin","jsmindmap"}),
-    @Script(value = "pinsmind.js", id="pinsmind", depends = "jquery")
+    @Script(value = "pinsmind.js", id="js-pinsmind", depends = "jquery")
   })
 
 @Stylesheets({
