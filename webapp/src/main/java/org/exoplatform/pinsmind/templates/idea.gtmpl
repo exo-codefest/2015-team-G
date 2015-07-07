@@ -14,39 +14,45 @@ if (id == 'codefest15') {%>
 
 <div id="mindmap-container">
   <ul>
-    <li><a href="http://kenneth.kufluk.com/blog/">Kenneth</a>
+    <li><a href="http://community.exoplatform.com/portal/intranet/feature-requests">Feature Requests</a>
       <ul>
-        <li><a href="http://twitter.com/kennethkufluk" target="_blank" class="icon twitter">Twitter</a></li>
-        <li><a href="http://www.linkedin.com/in/kennethkufluk" target="_blank" class="icon linkedin">LinkedIn</a></li>
-        <li><a href="http://www.facebook.com/kenneth.kufluk" target="_blank" class="icon facebook">Facebook</a></li>
-        <li><a href="http://feeds.feedburner.com/KennethKufluk" target="_blank" class="icon rss">RSS Feed</a></li>
+        <li><a href="http://community.exoplatform.com/portal/intranet/feature-requests" target="_blank" class="icon twitter">Usability</a></li>
+        <li><a href="http://community.exoplatform.com/portal/intranet/feature-requests" target="_blank" class="icon linkedin">GUI</a></li>
+        <li><a href="http://community.exoplatform.com/portal/intranet/feature-requests" target="_blank" class="icon facebook">For Admins</a></li>
+        <li><a href="http://community.exoplatform.com/portal/intranet/feature-requests" target="_blank" class="icon rss">For eXo Cloud</a></li>
     
-        <li><a href="http://kenneth.kufluk.com/blog/">Blog categories</a>
+        <li><a href="http://community.exoplatform.com/portal/intranet/feature-requests">Productivity</a>
           <ul>
-            <li><a href="http://kenneth.kufluk.com/blog/blog/general/" title="View all posts filed under General">General</a></li> 
-            <li><a href="http://kenneth.kufluk.com/blog/blog/personal/" title="View all posts filed under Personal">Personal</a></li> 
-            <li><a href="http://kenneth.kufluk.com/blog/blog/physics/" title="View all posts filed under Physics &amp; Astronomy">Physics &amp; Astronomy</a></li> 
-            <li><a href="http://kenneth.kufluk.com/blog/blog/projects/" title="View all posts filed under Projects">Projects</a></li> 
-            <li><a href="http://kenneth.kufluk.com/blog/blog/rant/" title="View all posts filed under Ranting">Ranting</a></li> 
-            <li><a href="http://kenneth.kufluk.com/blog/blog/work/" title="View all posts filed under Work">Work</a></li> 
+            <li><a href="community.exoplatform.com/portal/intranet/feature-requests?&questionId=Questionba43e0b7c06313bc15f6bc55a10d4167" title="Meeting Room">Meeting Room</a></li> 
+            <li><a href="community.exoplatform.com/portal/intranet/feature-requests?&questionId=Question6dfa9d3dc06313bc5271ee48c7f021ff" title="External contacts">External contacts</a></li> 
+            <li><a href="community.exoplatform.com/portal/intranet/feature-requests?&questionId=Question8d7e63e7c06313bc65e6ac8fb6beee36" title="Multi-page export in wiki">Multi-page export in wiki</a></li> 
+            <li><a href="community.exoplatform.com/portal/intranet/feature-requests?&questionId=Question42827199c06313bc280c7b067d72c9f6" title="Tag Multiple Documents">Tag Multiple Documents</a></li> 
+            <li><a href="community.exoplatform.com/portal/intranet/feature-requests?&questionId=Questione97c63d9c06313bc15c74bfd902ff731" title="Percentage voting">Percentage voting</a></li> 
+            <li><a href="community.exoplatform.com/portal/intranet/feature-requests?&questionId=Questione4fb7ea6c06313bc39420b6922a0ce09" title="User private Trash">User private Trash</a></li> 
+			 <li><a href="community.exoplatform.com/portal/intranet/feature-requests?&questionId=Questioncbdc3eb7c06313bc548f949f20ab70b3" title="Mute Activity">Mute Activity</a></li> 
+            <li><a href="community.exoplatform.com/portal/intranet/feature-requests?&questionId=Questiona250f8d2c06313bc47c2556131f01c63" title="Office Add-in">Office Add-in</a></li> 
+            <li><a href="community.exoplatform.com/portal/intranet/feature-requests?&questionId=Question9f92883cc06313bc13c7e55feb7e75b2" title="e-Meeting">e-Meeting</a></li> 
           </ul>
         </li>
-        <li><a href="http://kenneth.kufluk.com/blog/">Pages</a>
+        <li><a href="http://community.exoplatform.com/portal/intranet/feature-requests">Engagement</a>
           <ul>
-            <li><a href="http://kenneth.kufluk.com/blog/about/" title="About Kenneth">About Kenneth</a></li> 
-            <li><a href="http://kenneth.kufluk.com/blog/work/" title="Employment">Employment</a></li> 
-            <li><a href="http://kenneth.kufluk.com/blog/experiments/" title="Experiments">Experiments</a></li> 
+            <li><a href="community.exoplatform.com/portal/intranet/feature-requests?&questionId=Questione788bacac06313bc20a8c7894676518c" title="Pin/Unpin activity to top of space's Activity Stream">Pin/Unpin activity to top of space's Activity Stream</a></li> 
+            <li><a href="community.exoplatform.com/portal/intranet/feature-requests?&questionId=Question9b32ab5ac06313bc28ebb7e3c47319ce" title="Emoticons">Emoticons</a></li> 
+            <li><a href="community.exoplatform.com/portal/intranet/feature-requests?&questionId=Questiona3d47f35c06313bc587efc9ce6355651" title="Ideation">Ideation</a></li> 
+			<li><a href="community.exoplatform.com/portal/intranet/feature-requests?&questionId=Question98f75742c06313bc7b755d80e8cd54ee" title="Activity Stream - Company-wide Stream">Activity Stream - Company-wide Stream</a></li> 
+            <li><a href="community.exoplatform.com/portal/intranet/feature-requests?&questionId=Question30b416abc06313bc3d671ad04a03adc9" title="User invite/registration">User invite/registration</a></li> 
+            <li><a href="community.exoplatform.com/portal/intranet/feature-requests?&questionId=Questionecee268ec06313bc5f3de80e15147e0d" title="Photo sharing">Photo sharing</a></li> 
           </ul>
         </li>
-        <li><a href="http://kenneth.kufluk.com/blog/">Friends</a>
+        <li><a href="http://community.exoplatform.com/portal/intranet/feature-requests">Mobile Apps</a>
           <ul>
-            <li><a href="http://coderonfire.com/" title="Coder on Fire" rel="friend met co-worker colleague neighbor">Andrew Mason</a></li> 
-            <li><a href="http://www.wait-till-i.com" title="Wait till I come!" rel="met">Christian Heilmann</a></li> 
-            <li><a href="http://www.danwebb.net" rel="friend met" title="Godlike JavaScript Guru">Dan Webb</a></li> 
-            <li><a href="http://www.sitedaniel.com" rel="friend met co-worker colleague neighbor" title="Flash Whizz">Daniel Goldsworthy</a></li> 
-            <li><a href="http://dean.edwards.name" rel="friend met" title="Godlike JavaScript Guru">Dean Edwards</a></li> 
-            <li><a href="http://www.dotsonline.co.uk" title="My auntie&#8217;s music shop.">Dot&#8217;s Shop</a></li> 
-            <li><a href="http://simonwillison.net/" title="PHP, Python, CSS, XML and general web development.">Simon Willison</a></li> 
+            <li><a href="community.exoplatform.com/portal/intranet/feature-requests?&questionId=Question9863daa9c06313bc1994b1b333003521" title="Mobile - User Profile" rel="friend met co-worker colleague neighbor">Mobile - User Profile</a></li> 
+            <li><a href="community.exoplatform.com/portal/intranet/feature-requests?&questionId=Question9862bb73c06313bc3d002ab4bf830d2e" title="Mobile - Android Tablet App" rel="met">Mobile - Android Tablet App</a></li> 
+            <li><a href="community.exoplatform.com/portal/intranet/feature-requests?&questionId=Question98622cf0c06313bc58a121ddfdb93ec1" rel="friend met" title="Mobile - Chat">Mobile - Chat</a></li> 
+            <li><a href="community.exoplatform.com/portal/intranet/feature-requests?&questionId=Question9860b311c06313bc7ffcf2a25290fe77" rel="friend met co-worker colleague neighbor" title="Mobile - Improve Documents">Mobile - Improve Documents</a></li> 
+            <li><a href="community.exoplatform.com/portal/intranet/feature-requests?&questionId=Question985d1607c06313bc7e10a2ac77561820" rel="friend met" title="Mobile - Easy Sign Up to Community">Mobile - Easy Sign Up to Community</a></li> 
+            <li><a href="community.exoplatform.com/portal/intranet/feature-requests?&questionId=Questionc93e3339c06313bc33ef1d8bb38589c2" title="Mobile - Push Notifications">Mobile - Push Notifications</a></li> 
+            <li><a href="community.exoplatform.com/portal/intranet/feature-requests?&questionId=Question985a8b10c06313bc77f6cd955d832f34" title="Mobile - Search">Mobile - Search</a></li> 
           </ul>
         </li>
       </ul>
