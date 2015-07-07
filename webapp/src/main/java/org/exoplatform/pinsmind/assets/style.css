@@ -1,5 +1,6 @@
 #mindmap-container {
-  background-color:green;
+  position: absolute;
+  top: 60px;
 }
 .js-mindmap-active a.node {
   background:grey;

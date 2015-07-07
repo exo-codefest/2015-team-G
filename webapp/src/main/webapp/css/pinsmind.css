@@ -1,0 +1,13 @@
+.uiIconAppPinsMindPortlet {
+  background-image: url("images/idea.jpg");
+  background-repeat: no-repeat;
+  display: inline-block;
+  height: 35px;
+  line-height: 35px;
+  vertical-align: middle;
+  width: 35px;
+}
+
+.uiIconAppPinsMindPortlet:hover {
+  background-image: url("images/idea.jpg");
+}
