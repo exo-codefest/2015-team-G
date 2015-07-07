@@ -1,8 +1,12 @@
 #{decorate path=layout.gtmpl/}
 #{title value=Idea/}
 #{param name=idea/}
-<a class="btn btn-back" id="btn-back" href="@{PinsMindController.index()}"><<Back</a>
-<a class="btn btn-pin" id="btn-pin"><3 Pins</a>
+<a class="btn btn-back" id="btn-back" href="@{PinsMindController.index()}" title="Back">
+  <i class="uiIconReply"></i>
+</a>
+<a class="btn btn-pin" id="btn-pin" title="Pin it">
+  <i class="uiIconAttach"></i>
+</a>
 
 <%
 String id = idea.getName();
