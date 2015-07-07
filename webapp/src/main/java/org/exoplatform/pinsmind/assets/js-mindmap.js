@@ -437,7 +437,7 @@
     }
     this.size = (this.start.visible && this.end.visible) ? "thick" : "thin";
     this.color = (this.obj.activeNode.parent === this.start || this.obj.activeNode.parent === this.end) ? "red" : "blue";
-    this.strokeStyle = "#FFF";
+    this.strokeStyle = "grey";
 
     this.obj.canvas.path("M" + this.start.x + ' ' + this.start.y + "L" + this.end.x + ' ' + this.end.y).attr({'stroke': this.strokeStyle, 'opacity': 0.2, 'stroke-width': '5px'});
   };

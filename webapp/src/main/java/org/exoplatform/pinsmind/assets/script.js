@@ -38,4 +38,5 @@ $(document).ready(function() {
     $('>li', this).each(addLI);
   });
 
-});   
+  $('svg').appendTo('#mindmap-container');
+});
