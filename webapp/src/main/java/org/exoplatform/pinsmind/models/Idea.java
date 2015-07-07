@@ -20,6 +20,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.exoplatform.pinsmind.models.Idea.Status;
+
 /**
  * Created by The eXo Platform SAS
  * Author : eXoPlatform
@@ -31,18 +33,22 @@ public class Idea implements Serializable {
   private String name;
   private String description;
   private String author;
+  private Status status;
+  private boolean isHot;
+  private String likes;
+  
+  public static enum Status{
+    BACKLOG, PROGRESS, CLOSED
+  }
   
   private List<Idea> subIdeas;
   private Idea parent;
   
   public Idea(String name, String author){
-    this(null, name, author);
-  }
-  
-  public Idea(Idea parent, String name, String author){
-    this.parent = parent;
     this.name = name;
     this.author = author;
+    this.isHot = false;
+    this.status = Status.BACKLOG;
   }
   
   public String getName(){
@@ -53,11 +59,33 @@ public class Idea implements Serializable {
     this.name = name;
   }
   
+  public Status getStatus(){
+    return this.status;
+  }
+  
+  public void setStatus(Status status) {
+    this.status = status;
+  }
+  
+  public void toogleHot(){
+    this.isHot = !this.isHot;
+  }
+  
+  public boolean isHot(){
+    return isHot;
+  }
+  
   public void addSubIdea(Idea idea){
     if (subIdeas == null){
       subIdeas = new ArrayList<Idea>();
+      this.status = Status.PROGRESS;
     }
+    idea.parent = this;
     this.subIdeas.add(idea);
+  }
+  
+  public List<Idea> getSubIdeas(){
+    return this.subIdeas;
   }
   
   public boolean isRoot(){
@@ -71,6 +99,7 @@ public class Idea implements Serializable {
   public boolean isFinal(){
     return (subIdeas == null);
   }
-  
+
+
   
 }

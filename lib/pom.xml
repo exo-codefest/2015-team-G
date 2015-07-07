@@ -34,6 +34,10 @@
     <name>Codefest 2015 - Team G Addon - Library</name>
     <description>Codefest 2015 - Team G Addon - Extension Library providing all services</description>
     <dependencies>
+    	<dependency>
+    	    <groupId>org.exoplatform.core</groupId>
+			<artifactId>exo.core.component.organization.api</artifactId>
+        </dependency>	
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>

@@ -20,7 +20,10 @@
 package org.exoplatform.pinsmind;
 
 import java.security.Principal;
+import java.util.ArrayList;
+import java.util.List;
 
+import juzu.Mapped;
 import juzu.Path;
 import juzu.Resource;
 import juzu.Response;
@@ -33,7 +36,9 @@ import juzu.template.Template;
 import javax.inject.Inject;
 
 import org.exoplatform.pinsmind.models.Idea;
+import org.exoplatform.pinsmind.models.Idea.Status;
 import org.exoplatform.pinsmind.services.IdeaService;
+import org.json.JSONObject;
 
 public class PinsMindController {
 
@@ -51,22 +56,58 @@ public class PinsMindController {
   
   @View
   public Response.Content index() {
-    return board.with().ok();
+    List<Idea> hotList = ideaService.getHotMinds();
+    List<Idea> backlogList = ideaService.findByStatus(Status.BACKLOG);
+    List<Idea> progList = ideaService.findByStatus(Status.PROGRESS);
+    List<Idea> closedList = ideaService.findByStatus(Status.CLOSED);
+   
+    return board.with()
+        .set("hotList",hotList)
+        .set("backlogList", backlogList)
+        .set("progList", progList)
+        .set("closedList", closedList)
+        .ok()
+        .withAssets("mindboard-js");
   }
   
   @View
   @Route("/idea/{id}")
   public Response.Content show(String id) {
     Idea idea = ideaService.getIdea(id);
-    return ideaPage.with().set("idea", idea).ok();
+    return ideaPage.with()
+        .set("idea", idea)
+        .set("mindmapHtml",generateHtml(idea))
+        .ok()
+        .withAssets("raphaelmin","jsmindmap","idea-js","mindmap-css");
+  }
+  
+  @Resource
+  @Ajax
+  @Route("/idea")
+  public Response createNew(String name) {
+    Idea idea = ideaService.createNewIdea(name);
+    if (idea != null) {
+      return Response.ok(new JSONObject(idea).toString()).withMimeType("text/json");
+    } else {
+      return Response.status(500);
+    }
   }
 
   @Resource
   @Ajax
-  @Route("/pin/{id}")
-  public Response.Content pin(String id) {
-    return Response.Content.ok("pined");
+  @Route("/pin/{name}")
+  public Response pin(String id) {
+    Idea idea = ideaService.getIdea(id);
+    if (idea != null) {
+      idea.toogleHot();
+      ideaService.update(idea);
+      return Response.ok(new JSONObject(idea).toString()).withMimeType("text/json");
+    } else {
+      return Response.status(500);
+    }
   }
+  
+
   
   private String getCurrentUser(SecurityContext context) {
     Principal user = context.getUserPrincipal();
@@ -75,5 +116,22 @@ public class PinsMindController {
     } else {      
       return user.getName();          
     }
+  }
+  
+  private String generateHtml(Idea idea){
+    StringBuilder html = new StringBuilder();
+    html.append("<li id=\"list-"+idea.getName()+"\"><a href=\"#\">");
+    html.append(idea.getName());
+    html.append("</a>");
+    List<Idea> subIdeas = idea.getSubIdeas();
+    if (subIdeas != null){
+      html.append("<ul>");
+        for (Idea subIdea : subIdeas){
+          html.append(generateHtml(subIdea));
+        }
+      html.append("</ul>");
+    }
+    html.append("</li>");
+    return html.toString();
   }
 }

@@ -1,10 +1,19 @@
 #{decorate path=layout.gtmpl/}
 #{title value=Mindboard/}
+#{param name=hotList/}
+#{param name=backlogList/}
+#{param name=progList/}
+#{param name=closedList/}
+
+<span class="btn addIdea" data-toggle="modal" data-target="#newIdeaModal">
+  <i class="uiIconAddIcon"></i> New PinsMind
+</span>
 
 <!-- ======================================== HOT ========================== -->
 <div class="page-header">
 	<h2>Hot ideas</h2>
 </div>
+
 <div class="uiListTask">
 	<div class="row-fluid">
 		<div class="span3 uiBox">
@@ -12,23 +21,27 @@
 				<a href="#" class="favorite">
 					<i class="iconStarMini"></i>
 				</a>
-				<a href="@{PinsMindController.show(id='codefest15')}" class="title-board">Codefest 2015</a>
+				<a href="@{PinsMindController.show(id='mindmap')}" class="title-board">Mind Map</a>
 				<div class="desc">
 					Design & program an add-on for simplifying choices in a team.
 				</div>
 			</div>
 		</div>
+		
+		<% hotList.each { idea -> %>
 		<div class="span3 uiBox">
 			<div class="uiContentBox">
 				<a href="#" class="favorite">
 					<i class="iconStarMini"></i>
 				</a>
-				<a href="@{PinsMindController.show(id='mindmap')}" class="title-board">Mindmap</a>
+				<a href="@{PinsMindController.show(id=idea.name)}" class="title-board ${idea.status}">${idea.name}</a>
 				<div class="desc">
 					A mind map is a diagram used to visually organize information.
 				</div>
 			</div>
 		</div>
+		<%}%>
+		
 	</div>
 </div>
 
@@ -38,39 +51,19 @@
 </div>
 <div class="uiListTask">
 	<div class="row-fluid">
+		<% progList.each { idea -> %>
 		<div class="span3 uiBox">
 			<div class="uiContentBox">
 				<a href="#" class="favorite">
 					<i class="iconStarMini"></i>
 				</a>
-				<a class="title-board">Title Board</a>
+				<a href="@{PinsMindController.show(id=idea.name)}" class="title-board ${idea.status}">${idea.name}</a>
 				<div class="desc">
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+					A mind map is a diagram used to visually organize information.
 				</div>
-				</div>
+			</div>
 		</div>
-		<div class="span3 uiBox">
-			<div class="uiContentBox">
-				<a href="#" class="favorite">
-					<i class="iconStarMini"></i>
-				</a>
-				<a class="title-board">Title Board</a>
-				<div class="desc">
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-				</div>
-				</div>
-		</div>
-		<div class="span3 uiBox">
-			<div class="uiContentBox">
-				<a href="#" class="favorite">
-					<i class="iconStarMini"></i>
-				</a>
-				<a class="title-board">Title Board</a>
-				<div class="desc">
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-				</div>
-				</div>
-		</div>
+		<%}%>
 	</div>
 </div>
 
@@ -80,28 +73,19 @@
 </div>
 <div class="uiListTask">
 	<div class="row-fluid">
+		<% backlogList.each { idea -> %>
 		<div class="span3 uiBox">
 			<div class="uiContentBox">
 				<a href="#" class="favorite">
 					<i class="iconStarMini"></i>
 				</a>
-				<a class="title-board">Title Board</a>
+				<a href="@{PinsMindController.show(id=idea.name)}" class="title-board ${idea.status}">${idea.name}</a>
 				<div class="desc">
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+					A mind map is a diagram used to visually organize information.
 				</div>
 			</div>
 		</div>
-		<div class="span3 uiBox">
-			<div class="uiContentBox">
-				<a href="#" class="favorite">
-					<i class="iconStarMini"></i>
-				</a>
-				<a class="title-board">Title Board</a>
-				<div class="desc">
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-				</div>
-			</div>
-		</div>
+		<%}%>
 	</div>
 </div>
 
@@ -111,16 +95,38 @@
 </div>
 <div class="uiListTask">
 	<div class="row-fluid">
+		<% closedList.each { idea -> %>
 		<div class="span3 uiBox">
 			<div class="uiContentBox">
 				<a href="#" class="favorite">
 					<i class="iconStarMini"></i>
 				</a>
-				<a class="title-board">Title Board</a>
+				<a href="@{PinsMindController.show(id=idea.name)}" class="title-board ${idea.status}">${idea.name}</a>
 				<div class="desc">
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+					A mind map is a diagram used to visually organize information.
 				</div>
 			</div>
 		</div>
+		<%}%>
 	</div>
 </div>
+
+<div class="modal fade" id="newIdeaModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">New Brainstorm</h4>
+      </div>
+      <div class="modal-body">
+        <input name="name"/>
+        <input name="description"/>
+        <input name=""/>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="btn-submit">Create</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

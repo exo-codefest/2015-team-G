@@ -16,10 +16,15 @@
  */
 package org.exoplatform.pinsmind.services;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import javax.inject.Singleton;
+
 import org.exoplatform.pinsmind.models.Idea;
+import org.exoplatform.pinsmind.models.Idea.Status;
 
 /**
  * Created by The eXo Platform SAS
@@ -27,6 +32,7 @@ import org.exoplatform.pinsmind.models.Idea;
  *          exo@exoplatform.com
  * Jul 7, 2015  
  */
+@Singleton
 public class IdeaService {
   
   private Map<String,Idea> fakeIdeas = new HashMap<String,Idea>();
@@ -50,17 +56,38 @@ public class IdeaService {
     return findByName(name);
   }
   
+  public List<Idea> getHotMinds(){
+    return getFakeList();
+  }
+
+  public List<Idea> findByStatus(Status status){
+    return getFakeList();
+  }
+  
+  public Idea close(String name){
+    Idea idea = findByName(name);
+    if (idea != null){
+      idea.setStatus(Status.CLOSED);
+      saveIdea(idea);
+    }
+    return idea;
+  }
+  
+  public Idea update(Idea idea){
+    return saveIdea(idea);
+  }
+  
   private String getUser(){
     return "tao";
   }
   
-//FAKE DAO  
   
+//FAKE DAO  
+
   private Idea findByName(String name){
     Idea idea = fakeIdeas.get(name);
     if (idea == null){
-      idea = fakeIdeas.get("root");
-      idea.setName(name);
+      idea = new Idea(name, "liar");
     }
     return idea;
   }
@@ -71,19 +98,26 @@ public class IdeaService {
   }
   
   private void initFakeData(){
-    Idea fakeIdea = new Idea("root", "liar");
-    Idea subIdea1 = new Idea(fakeIdea,"Ha","Ha");
-    Idea subIdea2 = new Idea(fakeIdea,"Lan","Lan");
-    Idea subIdea3 = new Idea(fakeIdea,"May","May");
-    Idea subIdea4 = new Idea(fakeIdea,"Duong","Duong");
+    Idea fakeIdea = new Idea("codefest15", "liar");
+    Idea subIdea1 = new Idea("Ha","Ha");
+    Idea subsubIdea1 = new Idea("Saubeo","Ha");
+    subIdea1.addSubIdea(subsubIdea1);
+    
+    Idea subIdea2 = new Idea("Lan","Lan");
+    Idea subIdea3 = new Idea("May","May");
+    Idea subIdea4 = new Idea("Duong","Duong");
     fakeIdea.addSubIdea(subIdea1);
     fakeIdea.addSubIdea(subIdea2);
     fakeIdea.addSubIdea(subIdea3);
     fakeIdea.addSubIdea(subIdea4);
-    fakeIdea.addSubIdea(fakeIdea);
     
-    fakeIdeas.put("root", fakeIdea);
+    saveIdea(fakeIdea);
   }
   
+  private List<Idea> getFakeList(){
+    List<Idea> ideas = new ArrayList<Idea>();
+    ideas.addAll(fakeIdeas.values());
+    return ideas;
+  }
   
 }

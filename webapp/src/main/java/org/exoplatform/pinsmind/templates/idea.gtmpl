@@ -1,18 +1,28 @@
 #{decorate path=layout.gtmpl/}
 #{title value=Idea/}
 #{param name=idea/}
+#{param name=mindmapHtml/}
+
+
 <a class="btn btn-back" id="btn-back" href="@{PinsMindController.index()}" title="Back">
   <i class="uiIconReply"></i>
 </a>
-<a class="btn btn-pin" id="btn-pin" title="Pin it">
+
+<a class="btn btn-pin addIdea" id="btn-pin" title="Pin it">
   <i class="uiIconAttach"></i>
 </a>
 
-<%
-String id = idea.getName();
-if (id == 'codefest15') {%>
+<% if (idea.name.equals('codefest15')) {%>
+<ul>
+<!--img src="http://saratoolemiller.files.wordpress.com/2012/02/mindmap2.jpg"/-->
+</ul>
 
-<img src="http://saratoolemiller.files.wordpress.com/2012/02/mindmap2.jpg"/>
+<div id="mindmap-container">
+  <ul>
+  	${mindmapHtml}
+  </ul>
+</div>
+
 
 <%}else{%>
 
@@ -62,6 +72,8 @@ if (id == 'codefest15') {%>
       </ul>
     </li>
   </ul>
+  
 </div>
-
 <%}%>
+
+
