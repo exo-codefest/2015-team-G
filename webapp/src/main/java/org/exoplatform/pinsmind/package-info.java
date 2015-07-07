@@ -7,15 +7,17 @@
     @Script(value = "jquery-ui.min.js", id = "jqueryui"),
     @Script(value = "raphael-min.js", id = "raphaelmin", depends = {"jquery", "jqueryui"}),
     @Script(value = "js-mindmap.js", id = "jsmindmap", depends = {"jquery", "jqueryui","raphaelmin"}),
-    @Script(value = "script.js", id = "scriptnormal", depends = {"jquery", "jqueryui","raphaelmin","jsmindmap"})
+    @Script(value = "script.js", id = "idea", depends = {"jquery", "jqueryui","raphaelmin","jsmindmap"}),
+    @Script(value = "pinsmind.js", id="pinsmind", depends = "jquery")
   })
 
 @Stylesheets({
-  @Stylesheet(value = "style.css"),
-  @Stylesheet(value = "js-mindmap.css")
+  @Stylesheet(value = "style.css", id="pinsmind-css"),
+  @Stylesheet(value = "js-mindmap.css", id="mindmap-css")
 })
 
 @Assets("*")
+//@Assets({"jquery","jqueryui","raphaelmin","jsmindmap","idea","pinsmind","pinsmind-css","mindmap-css"})
 package org.exoplatform.pinsmind;
 
 import juzu.Application;

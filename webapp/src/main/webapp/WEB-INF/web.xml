@@ -39,6 +39,13 @@
     <param-value>guice</param-value>
   </context-param>
   
+
+<context-param>
+  <param-name>juzu.run_mode</param-name>
+  <param-value>live</param-value>
+</context-param>
+
+  
   <servlet>
     <servlet-name>AssetServlet</servlet-name>
     <servlet-class>juzu.impl.asset.AssetServlet</servlet-class>

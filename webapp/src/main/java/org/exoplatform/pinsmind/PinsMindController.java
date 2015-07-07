@@ -19,9 +19,15 @@
 
 package org.exoplatform.pinsmind;
 
+import java.security.Principal;
+
 import juzu.Path;
+import juzu.Resource;
 import juzu.Response;
+import juzu.Route;
 import juzu.View;
+import juzu.plugin.ajax.Ajax;
+import juzu.request.SecurityContext;
 import juzu.template.Template;
 
 import javax.inject.Inject;
@@ -29,11 +35,38 @@ import javax.inject.Inject;
 public class PinsMindController {
 
   @Inject
-  @Path("index.gtmpl")
-  Template index;
+  @Path("board.gtmpl")
+  Template board;
 
+  @Inject
+  @Path("idea.gtmpl")
+  Template ideaPage;
+
+  
   @View
   public Response.Content index() {
-    return index.with().ok();
+    return board.with().ok();
+  }
+  
+  @View
+  @Route("/idea/{id}")
+  public Response.Content show(String id) {
+    return ideaPage.with().set("id", id).ok();
+  }
+
+  @Resource
+  @Ajax
+  @Route("/pin/{id}")
+  public Response.Content pin(String id) {
+    return Response.Content.ok("pined");
+  }
+  
+  private String getCurrentUser(SecurityContext context) {
+    Principal user = context.getUserPrincipal();
+    if (user == null) {
+      return "Anonymous";
+    } else {      
+      return user.getName();          
+    }
   }
 }
