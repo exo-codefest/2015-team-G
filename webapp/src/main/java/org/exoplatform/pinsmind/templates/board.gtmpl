@@ -1,11 +1,126 @@
 #{decorate path=layout.gtmpl/}
 #{title value=Mindboard/}
-<span class="btn">+ New PinsMind</span>
-<h5 class="title">Hot idea</h5>
-<a href="@{PinsMindController.show(id='codefest15')}" class="progress">Codefest15</a>
-<a href="@{PinsMindController.show(id='mindmap')}" class="progress">Mind-map</a>
-<h5 class="title">In Progress</h5>
 
-<h5 class="title">Backlog</h5>
+<!-- ======================================== HOT ========================== -->
+<div class="page-header">
+	<h2>Hot ideas</h2>
+</div>
+<div class="uiListTask">
+	<div class="row-fluid">
+		<div class="span3 uiBox">
+			<div class="uiContentBox">
+				<a href="#" class="favorite">
+					<i class="iconStarMini"></i>
+				</a>
+				<a href="@{PinsMindController.show(id='codefest15')}" class="title-board">Codefest 2015</a>
+				<div class="desc">
+					Design & program an add-on for simplifying choices in a team.
+				</div>
+			</div>
+		</div>
+		<div class="span3 uiBox">
+			<div class="uiContentBox">
+				<a href="#" class="favorite">
+					<i class="iconStarMini"></i>
+				</a>
+				<a href="@{PinsMindController.show(id='mindmap')}" class="title-board">Mindmap</a>
+				<div class="desc">
+					A mind map is a diagram used to visually organize information.
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 
-<h5 class="title">Closed</h5>
+<!-- ======================================== In Progress ========================== -->
+<div class="page-header">
+	<h2>In Progress</h2>
+</div>
+<div class="uiListTask">
+	<div class="row-fluid">
+		<div class="span3 uiBox">
+			<div class="uiContentBox">
+				<a href="#" class="favorite">
+					<i class="iconStarMini"></i>
+				</a>
+				<a class="title-board">Title Board</a>
+				<div class="desc">
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+				</div>
+				</div>
+		</div>
+		<div class="span3 uiBox">
+			<div class="uiContentBox">
+				<a href="#" class="favorite">
+					<i class="iconStarMini"></i>
+				</a>
+				<a class="title-board">Title Board</a>
+				<div class="desc">
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+				</div>
+				</div>
+		</div>
+		<div class="span3 uiBox">
+			<div class="uiContentBox">
+				<a href="#" class="favorite">
+					<i class="iconStarMini"></i>
+				</a>
+				<a class="title-board">Title Board</a>
+				<div class="desc">
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+				</div>
+				</div>
+		</div>
+	</div>
+</div>
+
+<!-- ======================================== Backlog ========================== -->
+<div class="page-header">
+	<h2>Backlog</h2>
+</div>
+<div class="uiListTask">
+	<div class="row-fluid">
+		<div class="span3 uiBox">
+			<div class="uiContentBox">
+				<a href="#" class="favorite">
+					<i class="iconStarMini"></i>
+				</a>
+				<a class="title-board">Title Board</a>
+				<div class="desc">
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+				</div>
+			</div>
+		</div>
+		<div class="span3 uiBox">
+			<div class="uiContentBox">
+				<a href="#" class="favorite">
+					<i class="iconStarMini"></i>
+				</a>
+				<a class="title-board">Title Board</a>
+				<div class="desc">
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- ======================================== Closed ========================== -->
+<div class="page-header">
+	<h2>Closed</h2>
+</div>
+<div class="uiListTask">
+	<div class="row-fluid">
+		<div class="span3 uiBox">
+			<div class="uiContentBox">
+				<a href="#" class="favorite">
+					<i class="iconStarMini"></i>
+				</a>
+				<a class="title-board">Title Board</a>
+				<div class="desc">
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
