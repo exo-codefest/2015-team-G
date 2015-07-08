@@ -52,7 +52,7 @@ public class IdeaService {
 
   public Idea createNewIdea(String name, String description){
     String id = UUID.randomUUID().toString();
-    RootIdea newIdea = new RootIdea(id, name,getUser());
+    RootIdea newIdea = new RootIdea(id, name, getUser());
     newIdea.setDescription(description);
     return saveIdea(newIdea);
   }

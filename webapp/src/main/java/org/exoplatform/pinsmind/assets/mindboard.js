@@ -2,15 +2,6 @@
 	$(document).ready(function () {
 		$('#btn-submit').click(function () {
 			$('#addNewIdeaForm').submit();
-			/*var name = $("#newIdeaModal #idea").val();
-			var desc = $("#newIdeaModal #description").val();
-	    $(this).jzAjax('PinsMindController.createNew()', {
-	        data: {'name': name, "description": desc},
-	        success: function (data) {
-	          ;
-	        }
-	    });
-	    return false;*/
 		});
 
 		$('#newIdeaButton').click(function () {
@@ -18,13 +9,25 @@
 			modal.show();
 			modal.css("top", $(window).height()/2 -150);
 			modal.css("left", $(window).width()/2 + 150);
-			console.log($(window).width()/2 - 150);
-			console.log($(window).height()/2 - 300);
+
 		});
 
 		$('#closeNewIdeaButton').click(function () {
 			$('#newIdeaModal').hide();
 		});
+		
+		$("#information").click(
+			function () {
+			var modal = $('#introductionModal');
+			modal.show();
+			modal.css("top", $(window).height()/2-300);
+			modal.css("left", $(window).width()/2);
+		});
+		
+		$('#closeInfo').click(function () {
+			$('#introductionModal').hide();
+		});
+		
 	});
 
 })($);

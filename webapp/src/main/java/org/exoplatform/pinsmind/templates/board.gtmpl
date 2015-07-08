@@ -6,9 +6,12 @@
 #{param name=closedList/}
 
 <div>
-	<span style="font-style: italic; font-size: 14px;">Don't keep your ideas in mind!</span>
+	<span style="font-style: italic; font-size: 14px;">
+		Don't keep your ideas in mind!
+	</span>
+	<a href="#" id="information"><i class="uiIconInformation" data-toggle="modal" data-target="#introductionModal"></i></a>
 	<a id="newIdeaButton" class="btn addIdea" data-toggle="modal" data-target="#newIdeaModal">
-		<i class="uiIconAddIcon"></i> New Idea
+		<i class="uiIconAddIcon"></i> New Topic
 	</a>
 </div>
 
@@ -130,15 +133,15 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-body">
-      	<form id="addNewIdeaForm" action="@{PinsMindController.createNew()}">
+      	<form id="addNewIdeaForm" action="@{PinsMindController.createNew()}" method="POST">
 	        <div>
-						<label for="name">Idea</label>
-						<input type="text" value="" name="name" id="name" class="form-control">
+						<label for="name">Topic</label>
+						<input type="text" value="" name="name" id="name" class="form-control" placeholder="Topic" />
 					</div>
 					
 					<div>
 						<label for="description">Description</label>
-						<textarea name="description" id="description" rows="3" class="form-control"></textarea>
+						<textarea name="description" id="description" rows="3" class="form-control" placeholder="Description"></textarea>
 					</div>
 				</form>
 
@@ -150,3 +153,10 @@
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+
+
+#{include path="fragment_introduction.gtmpl"/}
+
+<script>
+//$('#introductionModal').modal();
+</script>
