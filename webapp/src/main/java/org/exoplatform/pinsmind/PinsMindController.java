@@ -70,7 +70,6 @@ public class PinsMindController {
   }
   
   @View
-  @Route("/idea/{id}")
   public Response.Content show(String id) {
     Idea idea = ideaService.getIdea(id);
     return ideaPage.with()
