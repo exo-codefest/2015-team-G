@@ -41,7 +41,7 @@
 
 <!-- ======================================== In Progress ========================== -->
 <div class="page-header">
-	<h2>In progress</h2>
+	<h2>Debating</h2>
 </div>
 <div class="uiListTask">
 	<div class="row-fluid">
@@ -85,7 +85,7 @@
 
 <!-- ======================================== Closed ========================== -->
 <div class="page-header">
-	<h2>To be continued...</h2>
+	<h2>Closed</h2>
 </div>
 <div class="uiListTask">
 	<div class="row-fluid">
