@@ -1,0 +1,80 @@
+#{decorate path=layout.gtmpl/}
+#{title value=Idea/}
+#{param name=idea/}
+#{param name=mindmapHtml/}
+#{param name=top3/}
+
+<input type="hidden" id="idea-name" value="${idea.id}"/>
+<a class="btn btn-back" id="btn-back" href="@{PinsMindController.index()}" title="Back">
+  <i class="uiIconReply"></i>
+</a>
+TOP3: 
+<% top3.each { top -> %>
+	<a href="javascript:focusToNode('${top.name}')">${top.name}<a/>
+<%}%>
+<a class="<%=idea.isHot() ? "btn addIdea btn-primary" : "btn addIdea"%>" id="btn-pin" title="Pin it">
+  <i class="uiIconAttach"></i>
+</a>
+
+<% if (!idea.id.equals('mindmap')) {%>
+<ul>
+<!--img src="http://saratoolemiller.files.wordpress.com/2012/02/mindmap2.jpg"/-->
+</ul>
+
+<div id="mindmap-container">
+  <ul>
+  	${mindmapHtml}
+  </ul>
+</div>
+
+
+<%}else{%>
+
+<div id="mindmap-container">
+  <ul>
+    <li><a href="http://community.exoplatform.com/portal/intranet/feature-requests">5 User Retension Strategies</a>
+      <ul>    
+        <li><a href="http://community.exoplatform.com/portal/intranet/feature-requests">Product</a>
+          <ul>
+            <li><a href="community.exoplatform.com/portal/intranet/feature-requests?&questionId=Questionba43e0b7c06313bc15f6bc55a10d4167" title="Meeting Room">Development</a></li> 
+            <li><a href="community.exoplatform.com/portal/intranet/feature-requests?&questionId=Question6dfa9d3dc06313bc5271ee48c7f021ff" title="External contacts">Feedback</a></li> 
+            <li><a href="community.exoplatform.com/portal/intranet/feature-requests?&questionId=Question8d7e63e7c06313bc65e6ac8fb6beee36" title="Multi-page export in wiki">Make something people want</a></li>
+          </ul>
+        </li>
+        <li><a href="http://community.exoplatform.com/portal/intranet/feature-requests">Marketing</a>
+          <ul>
+            <li><a href="community.exoplatform.com/portal/intranet/feature-requests?&questionId=Questione788bacac06313bc20a8c7894676518c" title="Pin/Unpin activity to top of space's Activity Stream">Email</a></li> 
+            <li><a href="community.exoplatform.com/portal/intranet/feature-requests?&questionId=Question9b32ab5ac06313bc28ebb7e3c47319ce" title="Emoticons">Content</a></li> 
+            <li><a href="community.exoplatform.com/portal/intranet/feature-requests?&questionId=Questiona3d47f35c06313bc587efc9ce6355651" title="Ideation">Social Proof</a></li>
+          </ul>
+        </li>
+        <li><a href="http://community.exoplatform.com/portal/intranet/feature-requests">Engagement</a>
+          <ul>
+            <li><a href="community.exoplatform.com/portal/intranet/feature-requests?&questionId=Question9863daa9c06313bc1994b1b333003521" title="Mobile - User Profile" rel="friend met co-worker colleague neighbor">Community</a></li> 
+            <li><a href="community.exoplatform.com/portal/intranet/feature-requests?&questionId=Question9862bb73c06313bc3d002ab4bf830d2e" title="Mobile - Android Tablet App" rel="met">Knowledge</a></li>
+          </ul>
+        </li>
+		<li><a href="http://community.exoplatform.com/portal/intranet/feature-requests">Customer Success</a>
+          <ul>
+            <li><a href="community.exoplatform.com/portal/intranet/feature-requests?&questionId=Questionba43e0b7c06313bc15f6bc55a10d4167" title="Meeting Room">Onboarding</a></li> 
+            <li><a href="community.exoplatform.com/portal/intranet/feature-requests?&questionId=Question6dfa9d3dc06313bc5271ee48c7f021ff" title="External contacts">Success Checks</a></li> 
+            <li><a href="community.exoplatform.com/portal/intranet/feature-requests?&questionId=Question8d7e63e7c06313bc65e6ac8fb6beee36" title="Multi-page export in wiki">Users Advocates</a></li>
+          </ul>
+        </li>
+		<li><a href="http://community.exoplatform.com/portal/intranet/feature-requests">Customer Support</a>
+          <ul>
+            <li><a href="community.exoplatform.com/portal/intranet/feature-requests?&questionId=Questionba43e0b7c06313bc15f6bc55a10d4167" title="Meeting Room">CRM Tools</a></li> 
+            <li><a href="community.exoplatform.com/portal/intranet/feature-requests?&questionId=Question6dfa9d3dc06313bc5271ee48c7f021ff" title="External contacts">Social Media</a></li> 
+            <li><a href="community.exoplatform.com/portal/intranet/feature-requests?&questionId=Question8d7e63e7c06313bc65e6ac8fb6beee36" title="Multi-page export in wiki">FAQ</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+  
+</div>
+<%}%>
+
+<script>
+	var idea = new Idea("${idea.id}");
+</script>
