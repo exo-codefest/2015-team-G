@@ -42,7 +42,7 @@ Nguyễn Thị Lan | DOC
 
 # How to use:
 
-**Step 1**. Create a new space such as “Team G”, after that, the add-on PinMind will be automatically added to this space on the navigation bar as follows:
+**Step 1**. Create a new space such as “Team G”, then, the add-on PinMind will be automatically added to this space on the navigation bar. Click on the PinMind symbol, you will see that topics are categorized by their status as follows:
 
 <img src="images/navigationbar.png" />
 
@@ -75,7 +75,7 @@ Or Remove node to delete the selected node. This node and its children will be d
 
 <img src="images/focusnode.png" />
 
-In addition, this tool provides "hot ideas" function to allow keeping up the debating topics and hot ideas:
+In addition, this add-on provides "hot ideas" function to allow keeping up with the debating topics.
 
 <img src="images/top3-1.png" />
 
