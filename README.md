@@ -23,6 +23,8 @@ Nguyễn Thị Lan | DOC
 
 * Purposes:  Facilitate brainstorming process between team members and allow voting to select great ideas effectively and efficiently
 
+* Preface: Due to the limitations of human resource and time, our add-on only stops at basic functions, the potential perspectives will be provided for future improvements. Our team are happy to receive your comments and suggestions, so please feel free to give us some feedback!
+
 # Definitions:
 
 - A team can work on many debating topics
@@ -85,3 +87,4 @@ In addition, this add-on provides "hot ideas" function to allow keeping up with 
 - Graphics design: provide more responsive and attractive design to increase user experience
 - Notification: enable sending notifications to members when the administrator makes a call for voting
 - Import/export ideas tree: quickly import and export the ideas tree under a specific data format
+- Real-time review: allow members to comment on each idea and the administrator can accept or ignore them
