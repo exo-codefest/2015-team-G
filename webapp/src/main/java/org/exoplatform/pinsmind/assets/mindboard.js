@@ -11,13 +11,17 @@
 		    });
 		    return false;
 		});
-		
     });
-    
-    
-    function addNewIdeaUI(newIdea) {
-		alert("Add new idea board")
+
+	function createNew(name,callback) {
+		$(document).jzAjax('PinsMindController.createNew()', {
+		    data: {'id': name},
+		    success: function (newIdea) {
+		    	callback(newIdea);
+		    }
+		});
 	}
 	
-	
 })($);
+
+

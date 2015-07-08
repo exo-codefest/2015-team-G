@@ -101,7 +101,8 @@ public class PinsMindController {
     if (idea != null) {
       idea.toogleHot();
       ideaService.update(idea);
-      return Response.ok(new JSONObject(idea).toString()).withMimeType("text/json");
+      String data = idea.isHot()? "Pinned" : "";
+      return Response.ok(data);
     } else {
       return Response.status(500);
     }
