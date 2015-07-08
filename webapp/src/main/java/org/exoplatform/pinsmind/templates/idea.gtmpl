@@ -3,12 +3,12 @@
 #{param name=idea/}
 #{param name=mindmapHtml/}
 
-
+<input type="hidden" id="idea-name" value="${idea.name}"/>
 <a class="btn btn-back" id="btn-back" href="@{PinsMindController.index()}" title="Back">
   <i class="uiIconReply"></i>
 </a>
 
-<a class="btn btn-pin addIdea" id="btn-pin" title="Pin it">
+<a class="<%=idea.isHot() ? "btn addIdea btn-primary" : "btn addIdea"%>" id="btn-pin" title="Pin it">
   <i class="uiIconAttach"></i>
 </a>
 
@@ -76,4 +76,8 @@
 </div>
 <%}%>
 
+<script>
+var idea = new Idea("${idea.name}");
+
+</script>
 

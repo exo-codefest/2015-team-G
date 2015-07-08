@@ -26,6 +26,9 @@
 .addIdea {
   float: right;
 }
+.clearFloat {
+  clear: both;
+}
 .menu-node {
   display: block;
   position: static;

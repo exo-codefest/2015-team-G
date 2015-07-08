@@ -9,7 +9,7 @@
     @Script(value = "jquery-ui.min.js", id = "jqueryui"),
     @Script(value = "raphael-min.js", id = "raphaelmin", depends = {"jquery", "jqueryui"}),
     @Script(value = "js-mindmap.js", id = "jsmindmap", depends = {"jquery", "jqueryui","raphaelmin"}),
-    @Script(value = "script.js", id = "idea-js", depends = {"jquery", "jqueryui","raphaelmin","jsmindmap"}),
+    @Script(value = "idea.js", id = "idea-js", depends = {"jquery", "jqueryui"}),
     @Script(value = "mindboard.js", id="mindboard-js", depends = "jquery")
   })
 
