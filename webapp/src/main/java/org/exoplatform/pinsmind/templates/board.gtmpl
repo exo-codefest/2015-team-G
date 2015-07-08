@@ -9,7 +9,7 @@
 	<span style="font-style: italic; font-size: 14px;">
 		Don't keep your ideas in mind!
 	</span>
-	<a href="#" id="information"><i class="uiIconInformation" data-toggle="modal" data-target="#introductionModal"></i></a>
+	&nbsp&nbsp<a href="#" id="information" title="About PinMind"><i class="uiIconInformation" data-toggle="modal" data-target="#introductionModal"></i></a>
 	<a id="newIdeaButton" class="btn addIdea" data-toggle="modal" data-target="#newIdeaModal">
 		<i class="uiIconAddIcon"></i> New Topic
 	</a>
@@ -17,35 +17,12 @@
 
 <!-- ======================================== HOT ========================== -->
 <div class="page-header clearFloat">
-	<h2>Hot ideas</h2>
+	<h2>Hot topics</h2>
 </div>
 
 <div class="uiListTask">
 	<div class="row-fluid">
-		<div class="span3 uiBox">
-			<div class="uiContentBox">
-				<a href="#" class="favorite">
-					<i class="iconStarMini"></i>
-				</a>
-				<a href="@{PinsMindController.show(id='mindmap')}" class="title-board">Mind Map</a>
-				<div class="desc">
-					A mind map is a diagram used to visually organize information.
-				</div>
-			</div>
-		</div>
-		
-		<div class="span3">
-			<div class="uiContentBox">
-				<a href="#" class="favorite">
-					<i class="iconStarMini"></i>
-				</a>
-				<a href="@{PinsMindController.show(id='mindmap')}" class="title-board">Mind Map</a>
-				<div class="desc">
-					A mind map is a diagram used to visually organize information.
-				</div>
-			</div>
-		</div>
-		
+
 		<% hotList.each { idea -> %>
 		<div class="span3 uiBox">
 			<div class="uiContentBox">
@@ -54,7 +31,7 @@
 				</a>
 				<a href="@{PinsMindController.show(id=idea.id)}" class="title-board ${idea.status}">${idea.name}</a>
 				<div class="desc">
-					Design & program an add-on for simplifying choices in a team.
+					${idea.description}
 				</div>
 			</div>
 		</div>
@@ -77,7 +54,7 @@
 				</a>
 				<a href="@{PinsMindController.show(id=idea.id)}" class="title-board ${idea.status}">${idea.name}</a>
 				<div class="desc">
-					A mind map is a diagram used to visually organize information.
+					${idea.description}
 				</div>
 			</div>
 		</div>
@@ -99,7 +76,7 @@
 				</a>
 				<a href="@{PinsMindController.show(id=idea.id)}" class="title-board ${idea.status}">${idea.name}</a>
 				<div class="desc">
-					A mind map is a diagram used to visually organize information.
+					${idea.description}
 				</div>
 			</div>
 		</div>
@@ -121,7 +98,7 @@
 				</a>
 				<a href="@{PinsMindController.show(id=idea.id)}" class="title-board ${idea.status}">${idea.name}</a>
 				<div class="desc">
-					A mind map is a diagram used to visually organize information.
+					${idea.description}
 				</div>
 			</div>
 		</div>

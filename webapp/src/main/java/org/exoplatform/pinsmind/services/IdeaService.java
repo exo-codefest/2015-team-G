@@ -160,16 +160,20 @@ public class IdeaService {
   }
   
   private void initFakeData(){
-    RootIdea fakeIdea = new RootIdea(UUID.randomUUID().toString(), "codefest15", "liar");
-    SubIdea subIdea1 = new SubIdea(UUID.randomUUID().toString(), "Ha","Ha");
-    SubIdea subsubIdea1 = new SubIdea(UUID.randomUUID().toString(), "Saubeo","Ha");
+    RootIdea fakeIdea = new RootIdea(UUID.randomUUID().toString(), "Codefest 2015", "liar");
+    
+    fakeIdea.setDescription("Design & program an add-on for simplifying choices in a team.");
+    SubIdea subIdea1 = new SubIdea(UUID.randomUUID().toString(), "Scheduling","Ha Le");
+    SubIdea subsubIdea1 = new SubIdea(UUID.randomUUID().toString(), "doodle.com","Sau beo");
     subIdea1.addSubIdea(subsubIdea1);
     saveIdea(subsubIdea1);
     saveIdea(subIdea1);
     
-    SubIdea subIdea2 = new SubIdea(UUID.randomUUID().toString(), "Lan","Lan");
-    SubIdea subIdea3 = new SubIdea(UUID.randomUUID().toString(), "May","May");
-    SubIdea subIdea4 = new SubIdea(UUID.randomUUID().toString(), "Duong","Duong");
+    SubIdea subIdea2 = new SubIdea(UUID.randomUUID().toString(), "Make choice","Lan Nguyen");
+    SubIdea subIdea3 = new SubIdea(UUID.randomUUID().toString(), "Find groups availability","May Dang");
+    SubIdea subIdea4 = new SubIdea(UUID.randomUUID().toString(), "Find restaurant","Duong Tran");
+    SubIdea subIdea5 = new SubIdea(UUID.randomUUID().toString(), "Poll voting","Minh Dang");
+    SubIdea subIdea6 = new SubIdea(UUID.randomUUID().toString(), "Share knowledge","Vu Nguyen");
     saveIdea(subIdea2);
     saveIdea(subIdea3);
     saveIdea(subIdea1);
@@ -178,8 +182,22 @@ public class IdeaService {
     fakeIdea.addSubIdea(subIdea2);
     fakeIdea.addSubIdea(subIdea3);
     fakeIdea.addSubIdea(subIdea4);
+    fakeIdea.addSubIdea(subIdea5);
+    fakeIdea.addSubIdea(subIdea6);
     
     saveIdea(fakeIdea);
+    fakeIdea.toogleHot();
+    update(fakeIdea);
+    
+    RootIdea mindmapIdea = new RootIdea(UUID.randomUUID().toString(), "Mind Map", "Terrence Tao");
+    mindmapIdea.setDescription("A mind map is a diagram used to visually organize information. ");
+    SubIdea mindmapsubIdea1 = new SubIdea(UUID.randomUUID().toString(), "Scheduling","Ha Le");
+    SubIdea mindmapsubsubIdea1 = new SubIdea(UUID.randomUUID().toString(), "doodle.com","Sau beo");
+    mindmapsubIdea1.addSubIdea(mindmapsubsubIdea1);
+    saveIdea(mindmapsubsubIdea1);
+    saveIdea(mindmapsubIdea1);
+
+    saveIdea(mindmapIdea);
   }
   
   private List<Idea> getFakeList(){

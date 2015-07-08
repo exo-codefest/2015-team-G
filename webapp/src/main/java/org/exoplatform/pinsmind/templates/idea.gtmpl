@@ -5,16 +5,29 @@
 #{param name=top3/}
 
 <input type="hidden" id="idea-name" value="${idea.id}"/>
-<a class="btn btn-back" id="btn-back" href="@{PinsMindController.index()}" title="Back">
-  <i class="uiIconReply"></i>
-</a>
-TOP3: 
-<% top3.each { top -> %>
-	<a href="javascript:focusToNode('${top.name}')">${top.name}<a/>
-<%}%>
 <a class="<%=idea.isHot() ? "btn addIdea btn-primary" : "btn addIdea"%>" id="btn-pin" title="Pin it">
   <i class="uiIconAttach"></i>
 </a>
+<a class="btn btn-back" id="btn-back" href="@{PinsMindController.index()}" title="Back">
+  <i class="uiIconReply"></i>
+</a>
+
+<div style="margin: 10px 0px 0px; clear: both">
+	<span style="font-weight: bold; font-size: 14px; color: #555">TOP 3:</span>
+	<ul>
+		<% 
+			int i=3;
+			top3.each { top ->
+			i--;
+		%>
+			<li><div style="float: left; width: 60px;">
+			<% for (int j=0; j<=i; j++) { %>
+				<i class="uiIconBookmark uiIconBlue"></i>
+			<% } %>
+			</div><a style="color: inherit;" href="javascript:focusToNode('${top.name}')">${top.name} (<%=idea.getLikeSize()%>)</a></li>
+		<%}%>
+	</ul>
+</div>
 
 <% if (!idea.id.equals('mindmap')) {%>
 <ul>
