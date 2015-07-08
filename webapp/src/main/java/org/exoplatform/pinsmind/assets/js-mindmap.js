@@ -130,6 +130,9 @@
     });
 	
 	this.el.bind('contextmenu', function(e) {
+		var oldNode = $(".pin-clicked");
+		if (oldNode.length) oldNode.removeClass("pin-clicked");
+		$(this).addClass("pin-clicked");
 		$("#menu").remove();
 		var position = $(this).position();
 		var txt="<div id=\"menu\" style=\"position: absolute; z-index: 115; top:"+(position.top+40)+"px; left:"+(position.left+50)+"px\"><ul class=\"dropdown-menu menu-node\"><li id=\"add-node-button\" class=\"pin-menu-item\"><a><i class=\"uiIconAddIcon\"></i> Add</a></li><li id=\"edit-node-button\" class=\"pin-menu-item\"><a><i class=\"uiIconEdit\"></i> Edit</a></li><li id=\"remove-node-button\" class=\"pin-menu-item\"><a><i class=\"uiIconMinus\"></i> Remove</a></li><li class=\"pin-menu-item\"><a><i class=\"uiIconThumbUp\"></i> Vote</a></li></ul></div>";
@@ -137,12 +140,32 @@
 		$('#remove-node-button').bind('click', function (e){
 			thisnode.removeNode();
 			thisnode.animateToStatic();
-			$('#menu').hide();
+			$('#menu').remove();
 		});
 		$('#add-node-button').bind('click', function (e){
 			$('#mindmap-container').addNode(thisnode,"test",thisnode.options);
 			thisnode.animateToStatic();
-			$('#menu').hide();
+			$('#menu').remove();
+			
+		});
+		$('#edit-node-button').bind('click', function (e){
+			var position = $('#menu').position();
+			$('#menu').remove();
+			$("#pin-edit-box").remove();
+			var txt="<div id=\"pin-edit-box\" style=\"position: absolute; z-index: 116; top:"+(position.top)+"px; left:"+(position.left)+"px\"><textarea id=\"pin-textarea\" rows=\"1\" cols=\"5\">"+$('.pin-clicked').text()+"</textarea></div>";
+			$('#mindmap-container').prepend(txt);
+			$('#pin-textarea').bind('keydown', function(event){
+					 var keyCode = (event.keyCode ? event.keyCode : event.which);   
+						if (keyCode == 13) {
+							$('.pin-clicked').text($('#pin-textarea').val());
+							$('#pin-edit-box').remove();
+						}
+				});
+				/*$('#pin-submit-button').bind('click', function (e){
+				$('.pin-clicked').text($('#pin-textarea').val());
+				$('#pin-edit-box').remove();
+				
+				});*/
 		});
 	});
   };
