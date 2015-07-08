@@ -4,7 +4,7 @@
 #{param name=mindmapHtml/}
 #{param name=top3/}
 
-<input type="hidden" id="idea-name" value="${idea.name}"/>
+<input type="hidden" id="idea-name" value="${idea.id}"/>
 <a class="btn btn-back" id="btn-back" href="@{PinsMindController.index()}" title="Back">
   <i class="uiIconReply"></i>
 </a>
@@ -16,7 +16,7 @@ TOP3:
   <i class="uiIconAttach"></i>
 </a>
 
-<% if (idea.name.equals('codefest15')) {%>
+<% if (!idea.id.equals('mindmap')) {%>
 <ul>
 <!--img src="http://saratoolemiller.files.wordpress.com/2012/02/mindmap2.jpg"/-->
 </ul>
@@ -81,7 +81,5 @@ TOP3:
 <%}%>
 
 <script>
-var idea = new Idea("${idea.name}");
-
+	var idea = new Idea("${idea.id}");
 </script>
-

@@ -18,7 +18,6 @@
   @Stylesheet(value = "js-mindmap.css", id="mindmap-css")
 })
 
-//@Assets("*")
 @Assets({"jquery","jqueryui","pinsmind-css"})
 package org.exoplatform.pinsmind;
 

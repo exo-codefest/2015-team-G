@@ -25,6 +25,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import juzu.Action;
 import juzu.Mapped;
 import juzu.Path;
 import juzu.Resource;
@@ -84,30 +85,28 @@ public class PinsMindController {
         .withAssets("raphaelmin","jsmindmap","idea-js","mindmap-css");
   }
   
-  @Resource
-  @Ajax
-  @Route("/idea")
-  public Response createNew(String name) {
-    Idea idea = ideaService.createNewIdea(name);
-    if (idea != null) {
-      return Response.ok(new JSONObject(idea).toString()).withMimeType("text/json");
-    } else {
-      return Response.status(500);
-    }
+  @View
+  public Response.Content createNew(String name, String description) {
+    Idea idea = ideaService.createNewIdea(name, description);
+    return ideaPage.with()
+                   .set("idea", idea)
+                   .set("mindmapHtml", generateHtml(idea))
+                   .ok()
+                   .withAssets("raphaelmin","jsmindmap","idea-js","mindmap-css");
   }
 
   private String getCurrentUser(SecurityContext context) {
     Principal user = context.getUserPrincipal();
     if (user == null) {
       return "Anonymous";
-    } else {      
-      return user.getName();          
+    } else {
+      return user.getName();
     }
   }
-  
+
   private String generateHtml(Idea idea){
     StringBuilder html = new StringBuilder();
-    html.append("<li id=\"list-"+idea.getName()+"\"><a href=\"#\">");
+    html.append("<li id=\"list-"+idea.getId()+"\"><a href=\"#\">");
     html.append(idea.getName());
     html.append("</a>");
     List<Idea> subIdeas = idea.getSubIdeas();

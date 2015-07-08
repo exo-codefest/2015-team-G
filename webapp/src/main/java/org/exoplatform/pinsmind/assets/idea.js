@@ -45,20 +45,20 @@ $(document).ready(function() {
 
   $('svg').appendTo('#mindmap-container');
 
-  //ignore default settings
+  // Ignore right click of browser
   window.oncontextmenu = function() {
         return false;
   };
 });
 
 //============= IDEA =============
-function Idea(name) {
-	this.name = name;
+function Idea(id) {
+	this.id = id;
 }
 
 Idea.prototype.tooglePin = function(target) {
 	$(target).jzAjax('IdeaController.pin()', {
-        data: {'name': idea.name},
+        data: {'id': idea.id},
         success: function (data) {
         	if (data) {
         		$(target).addClass("btn-primary");
@@ -71,7 +71,6 @@ Idea.prototype.tooglePin = function(target) {
     });
     return false;
 }
-
 
 Idea.prototype.addSubIdea = function(target,newIdea,callback) {
 	$(target).jzAjax('IdeaController.addSub()', {

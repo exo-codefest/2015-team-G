@@ -16,6 +16,8 @@
  */
 package org.exoplatform.pinsmind.models;
 
+import java.util.UUID;
+
 /**
  * Created by The eXo Platform SAS
  * Author : eXoPlatform
@@ -31,8 +33,8 @@ public class RootIdea extends Idea{
 
   private Status status;
   
-  public RootIdea(String name, String author){
-    super(name,author);
+  public RootIdea(String id, String name, String author){
+    super(id, name,author);
     this.status = Status.BACKLOG;
   }
   

@@ -24,6 +24,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
+import java.util.UUID;
 
 import javax.inject.Singleton;
 
@@ -49,14 +50,16 @@ public class IdeaService {
     initFakeData();
   }
 
-  public Idea createNewIdea(String name){
-    RootIdea newIdea = new RootIdea(name,getUser());
+  public Idea createNewIdea(String name, String description){
+    String id = UUID.randomUUID().toString();
+    RootIdea newIdea = new RootIdea(id, name,getUser());
+    newIdea.setDescription(description);
     return saveIdea(newIdea);
   }
   
   public Idea createSubIdea(String parentId, String name){
-    Idea parent = findByName(parentId);
-    SubIdea idea = new SubIdea(name, getUser());
+    Idea parent = findById(parentId);
+    SubIdea idea = new SubIdea(UUID.randomUUID().toString(), name, getUser());
     parent.addSubIdea(idea);
     saveIdea(idea);
     saveIdea(parent);
@@ -65,16 +68,16 @@ public class IdeaService {
   
 //============ EDIT ============
   
-  public Idea like(String ideaName){
-    Idea idea = findByName(ideaName);
+  public Idea like(String id){
+    Idea idea = findById(id);
     idea.addLike(getUser());
     //return saveIdea(idea);
     return idea;
   }
   
-  public RootIdea close(String name) throws Exception{
+  public RootIdea close(String id) throws Exception{
     try{
-      RootIdea idea = (RootIdea) findByName(name);
+      RootIdea idea = (RootIdea) findById(id);
       if (idea != null){
         idea.close();
         saveIdea(idea);
@@ -95,8 +98,8 @@ public class IdeaService {
   }
   
 //=========== SEARCHING =========
-  public Idea getIdea(String name){
-    return findByName(name);
+  public Idea getIdea(String id){
+    return findById(id);
   }
   
   public Set<Idea> getHotMinds(){
@@ -146,31 +149,31 @@ public class IdeaService {
   
 //FAKE DAO  
 
-  private Idea findByName(String name){
-    Idea idea = fakeIdeas.get(name);
+  private Idea findById(String id){
+    Idea idea = fakeIdeas.get(id);
     return idea;
   }
   
   private Idea saveIdea(Idea idea){
-    fakeIdeas.put(idea.getName(), idea);
+    fakeIdeas.put(idea.getId(), idea);
     return idea;
   }
   
   private void initFakeData(){
-    RootIdea fakeIdea = new RootIdea("codefest15", "liar");
-    SubIdea subIdea1 = new SubIdea("Ha","Ha");
-    SubIdea subsubIdea1 = new SubIdea("Saubeo","Ha");
+    RootIdea fakeIdea = new RootIdea(UUID.randomUUID().toString(), "codefest15", "liar");
+    SubIdea subIdea1 = new SubIdea(UUID.randomUUID().toString(), "Ha","Ha");
+    SubIdea subsubIdea1 = new SubIdea(UUID.randomUUID().toString(), "Saubeo","Ha");
     subIdea1.addSubIdea(subsubIdea1);
     saveIdea(subsubIdea1);
     saveIdea(subIdea1);
     
-    SubIdea subIdea2 = new SubIdea("Lan","Lan");
-    SubIdea subIdea3 = new SubIdea("May","May");
-    SubIdea subIdea4 = new SubIdea("Duong","Duong");
+    SubIdea subIdea2 = new SubIdea(UUID.randomUUID().toString(), "Lan","Lan");
+    SubIdea subIdea3 = new SubIdea(UUID.randomUUID().toString(), "May","May");
+    SubIdea subIdea4 = new SubIdea(UUID.randomUUID().toString(), "Duong","Duong");
     saveIdea(subIdea2);
     saveIdea(subIdea3);
     saveIdea(subIdea1);
-    
+
     fakeIdea.addSubIdea(subIdea1);
     fakeIdea.addSubIdea(subIdea2);
     fakeIdea.addSubIdea(subIdea3);
@@ -184,7 +187,5 @@ public class IdeaService {
     ideas.addAll(fakeIdeas.values());
     return ideas;
   }
-  
-  
-  
+
 }

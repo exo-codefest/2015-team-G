@@ -16,6 +16,8 @@
  */
 package org.exoplatform.pinsmind.models;
 
+import java.util.UUID;
+
 /**
  * Created by The eXo Platform SAS
  * Author : eXoPlatform
@@ -26,8 +28,8 @@ public class SubIdea extends Idea implements Comparable<SubIdea>{
   
   private Idea parent;
 
-  public SubIdea(String name, String author) {
-    super(name, author);
+  public SubIdea(String id, String name, String author) {
+    super(id, name, author);
   }
   
   public Idea getParent(){

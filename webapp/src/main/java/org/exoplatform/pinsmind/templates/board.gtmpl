@@ -7,7 +7,7 @@
 
 <div>
 	<span style="font-style: italic; font-size: 14px;">Don't keep your ideas in mind!</span>
-	<a class="btn addIdea" data-toggle="modal" data-target="#newIdeaModal">
+	<a id="newIdeaButton" class="btn addIdea" data-toggle="modal" data-target="#newIdeaModal">
 		<i class="uiIconAddIcon"></i> New Idea
 	</a>
 </div>
@@ -49,7 +49,7 @@
 				<a href="#" class="favorite">
 					<i class="iconStarMini"></i>
 				</a>
-				<a href="@{PinsMindController.show(id=idea.name)}" class="title-board ${idea.status}">${idea.name}</a>
+				<a href="@{PinsMindController.show(id=idea.id)}" class="title-board ${idea.status}">${idea.name}</a>
 				<div class="desc">
 					Design & program an add-on for simplifying choices in a team.
 				</div>
@@ -72,7 +72,7 @@
 				<a href="#" class="favorite">
 					<i class="iconStarMini"></i>
 				</a>
-				<a href="@{PinsMindController.show(id=idea.name)}" class="title-board ${idea.status}">${idea.name}</a>
+				<a href="@{PinsMindController.show(id=idea.id)}" class="title-board ${idea.status}">${idea.name}</a>
 				<div class="desc">
 					A mind map is a diagram used to visually organize information.
 				</div>
@@ -94,7 +94,7 @@
 				<a href="#" class="favorite">
 					<i class="iconStarMini"></i>
 				</a>
-				<a href="@{PinsMindController.show(id=idea.name)}" class="title-board ${idea.status}">${idea.name}</a>
+				<a href="@{PinsMindController.show(id=idea.id)}" class="title-board ${idea.status}">${idea.name}</a>
 				<div class="desc">
 					A mind map is a diagram used to visually organize information.
 				</div>
@@ -116,7 +116,7 @@
 				<a href="#" class="favorite">
 					<i class="iconStarMini"></i>
 				</a>
-				<a href="@{PinsMindController.show(id=idea.name)}" class="title-board ${idea.status}">${idea.name}</a>
+				<a href="@{PinsMindController.show(id=idea.id)}" class="title-board ${idea.status}">${idea.name}</a>
 				<div class="desc">
 					A mind map is a diagram used to visually organize information.
 				</div>
@@ -126,21 +126,26 @@
 	</div>
 </div>
 
-<div class="modal fade" id="newIdeaModal">
+<div class="modal" id="newIdeaModal" style="display: none; width: 300px;">
   <div class="modal-dialog">
     <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">New Brainstorm</h4>
-      </div>
       <div class="modal-body">
-        <input name="name"/>
-        <input name="description"/>
-        <input name=""/>
+      	<form id="addNewIdeaForm" action="@{PinsMindController.createNew()}">
+	        <div>
+						<label for="name">Idea</label>
+						<input type="text" value="" name="name" id="name" class="form-control">
+					</div>
+					
+					<div>
+						<label for="description">Description</label>
+						<textarea name="description" id="description" rows="3" class="form-control"></textarea>
+					</div>
+				</form>
+
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" id="btn-submit">Create</button>
+      <div class="modal-footer" style="text-align: center;">
+      	<button type="button" class="btn btn-default" id="closeNewIdeaButton">Close</a>
+        <button type="button" class="btn btn-primary" id="btn-submit">Add</button>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->

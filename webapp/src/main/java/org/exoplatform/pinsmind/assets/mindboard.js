@@ -1,27 +1,30 @@
 (function ($) {
 	$(document).ready(function () {
 		$('#btn-submit').click(function () {
-			var name = $("#newIdea-modal #name").val();
-			var desc = $("#newIdea-modal #desc").val();
-		    $(this).jzAjax('PinsMindController.createNew()', {
-		        data: {'name': name,"description": desc},
-		        success: function (data) {
-		            addNewIdeaUI(data);
-		        }
-		    });
-		    return false;
+			$('#addNewIdeaForm').submit();
+			/*var name = $("#newIdeaModal #idea").val();
+			var desc = $("#newIdeaModal #description").val();
+	    $(this).jzAjax('PinsMindController.createNew()', {
+	        data: {'name': name, "description": desc},
+	        success: function (data) {
+	          ;
+	        }
+	    });
+	    return false;*/
 		});
-    });
 
-	function createNew(name,callback) {
-		$(document).jzAjax('PinsMindController.createNew()', {
-		    data: {'id': name},
-		    success: function (newIdea) {
-		    	callback(newIdea);
-		    }
+		$('#newIdeaButton').click(function () {
+			var modal = $('#newIdeaModal');
+			modal.show();
+			modal.css("top", $(window).height()/2 -150);
+			modal.css("left", $(window).width()/2 + 150);
+			console.log($(window).width()/2 - 150);
+			console.log($(window).height()/2 - 300);
 		});
-	}
-	
+
+		$('#closeNewIdeaButton').click(function () {
+			$('#newIdeaModal').hide();
+		});
+	});
+
 })($);
-
-
