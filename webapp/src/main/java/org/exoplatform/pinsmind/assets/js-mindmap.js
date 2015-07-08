@@ -132,9 +132,7 @@
 	this.el.bind('contextmenu', function(e) {
 			$("#menu").remove();
 			var position = $(this).position();
-			var txt="<div id=\"menu\" style=\"position: absolute; z-index: 115; top:"+(position.top-50)+"px; left:"+(100+position.left)+"px\"><ul><li><i class=\"uiIconAddIcon\"></i> Add</li><li><i class=\"uiIconEdit\"></i> Edit</li><li><i class=\"uiIconMinus\"></i> Remove</li><li><i class=\"uiIconThumbUp\"></i> Vote</li></ul></div>";
-			
-			//var txt="<div id=\"menu\" class=\"uiRightClickPopupMenu\" style=\"display: block; position: absolute; z-index: 115; top:"+(position.top-50)+"px; left:"+(100+position.left)+"px\"><div class=\"uiContextMenuContainer\" style=\"width: 200px;\"><ul class=\"dropdown-menu uiRightPopupMenuContainer\"><li class=\"menuItem\"><a href=\"\" style=\"display: block;\"><i class=\"uiIconAddIcon\"></i> Add</a></li><li class=\"menuItem\"><a onclick=\"\" href=\"\" style=\"display: block;\"><i class=\"uiIconEdit\"></i> Edit</a></li><li class=\"menuItem\"><a onclick=\"\" href=\"\" style=\"display: none;\"><i class=\"uiIconThumbUp\"></i> Vote</a></li></ul></div></div>";
+			var txt="<div id=\"menu\" style=\"position: absolute; z-index: 115; top:"+(position.top+40)+"px; left:"+(position.left+50)+"px\"><ul class=\"dropdown-menu menu-node\"><li><a href=\"#\"><i class=\"uiIconAddIcon\"></i> Add</a></li><li><a href=\"#\"><i class=\"uiIconEdit\"></i> Edit</a></li><li><a href=\"#\"><i class=\"uiIconMinus\"></i> Remove</a></li><li><a href=\"#\"><i class=\"uiIconThumbUp\"></i> Vote</a></li></ul></div>";
 			$('#mindmap-container').prepend(txt);
 			});
   };
