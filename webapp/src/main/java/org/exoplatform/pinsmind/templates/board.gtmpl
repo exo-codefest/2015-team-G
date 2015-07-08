@@ -5,12 +5,15 @@
 #{param name=progList/}
 #{param name=closedList/}
 
-<a class="btn addIdea" data-toggle="modal" data-target="#newIdeaModal">
-  <i class="uiIconAddIcon"></i> New PinsMind
-</a>
+<div>
+	<span style="font-style: italic; font-size: 14px;">Don't keep your ideas in mind!</span>
+	<a class="btn addIdea" data-toggle="modal" data-target="#newIdeaModal">
+		<i class="uiIconAddIcon"></i> New Idea
+	</a>
+</div>
 
 <!-- ======================================== HOT ========================== -->
-<div class="page-header">
+<div class="page-header clearFloat">
 	<h2>Hot ideas</h2>
 </div>
 
