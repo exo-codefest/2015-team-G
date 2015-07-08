@@ -81,6 +81,6 @@ Or Remove node to delete the selected node. This node and its children will be d
 
 # Perspectives:
 
-Voting: allow members to vote for all ideas
-Hot ideas: keep members follow the debating topics and hot ideas
-Graphics design: provide more responsive and attractive design to increase user experience
+- Voting: allow members to vote for all ideas
+- Hot ideas: keep members follow the debating topics and hot ideas
+- Graphics design: provide more responsive and attractive design to increase user experience
