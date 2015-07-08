@@ -130,23 +130,19 @@
     });
 	
 	this.el.bind('contextmenu', function(e) {
-			$(this).addClass("clicked-node");
-			$("#menu").remove();
-			var position = $(this).position();
-			var txt="<div id=\"menu\" style=\"position: absolute; z-index: 115; top:"+(position.top-50)+"px; left:"+(100+position.left)+"px\"><ul><li id=\"add-node-button\" ><i class=\"uiIconAddIcon\"></i> Add</li><li><i class=\"uiIconEdit\"></i> Edit</li><li id=\"remove-node-button\"><i class=\"uiIconMinus\"></i> Remove</li><li><i class=\"uiIconThumbUp\"></i> Vote</li></ul></div>";
-			
-			//var txt="<div id=\"menu\" class=\"uiRightClickPopupMenu\" style=\"display: block; position: absolute; z-index: 115; top:"+(position.top-50)+"px; left:"+(100+position.left)+"px\"><div class=\"uiContextMenuContainer\" style=\"width: 200px;\"><ul class=\"dropdown-menu uiRightPopupMenuContainer\"><li class=\"menuItem\"><a href=\"\" style=\"display: block;\"><i class=\"uiIconAddIcon\"></i> Add</a></li><li class=\"menuItem\"><a onclick=\"\" href=\"\" style=\"display: block;\"><i class=\"uiIconEdit\"></i> Edit</a></li><li class=\"menuItem\"><a onclick=\"\" href=\"\" style=\"display: none;\"><i class=\"uiIconThumbUp\"></i> Vote</a></li></ul></div></div>";
-			$('#mindmap-container').prepend(txt);
-			$('#remove-node-button').bind('click', function (e){
-				thisnode.removeNode();
-				thisnode.animateToStatic();
-			});
-			$('#add-node-button').bind('click', function (e){
-				//alert('hello');
-				$('#mindmap-container').addNode(thisnode,"test",thisnode.options);
-				thisnode.animateToStatic();
-			});
-			});
+		$("#menu").remove();
+		var position = $(this).position();
+		var txt="<div id=\"menu\" style=\"position: absolute; z-index: 115; top:"+(position.top+40)+"px; left:"+(position.left+50)+"px\"><ul class=\"dropdown-menu menu-node\"><li id=\"add-node-button\" class=\"pin-menu-item\"><a><i class=\"uiIconAddIcon\"></i> Add</a></li><li class=\"pin-menu-item\"><a><i class=\"uiIconEdit\"></i> Edit</a></li><li id=\"remove-node-button\" class=\"pin-menu-item\"><a><i class=\"uiIconMinus\"></i> Remove</a></li><li class=\"pin-menu-item\"><a><i class=\"uiIconThumbUp\"></i> Vote</a></li></ul></div>";
+		$('#mindmap-container').prepend(txt);
+		$('#remove-node-button').bind('click', function (e){
+			thisnode.removeNode();
+			thisnode.animateToStatic();
+		});
+		$('#add-node-button').bind('click', function (e){
+			$('#mindmap-container').addNode(thisnode,"test",thisnode.options);
+			thisnode.animateToStatic();
+		});
+	});
   };
 
   // ROOT NODE ONLY:  control animation loop

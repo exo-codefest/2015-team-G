@@ -5,9 +5,9 @@
 #{param name=progList/}
 #{param name=closedList/}
 
-<span class="btn addIdea" data-toggle="modal" data-target="#newIdeaModal">
+<a class="btn addIdea" data-toggle="modal" data-target="#newIdeaModal">
   <i class="uiIconAddIcon"></i> New PinsMind
-</span>
+</a>
 
 <!-- ======================================== HOT ========================== -->
 <div class="page-header">
@@ -23,7 +23,7 @@
 				</a>
 				<a href="@{PinsMindController.show(id='mindmap')}" class="title-board">Mind Map</a>
 				<div class="desc">
-					Design & program an add-on for simplifying choices in a team.
+					A mind map is a diagram used to visually organize information.
 				</div>
 			</div>
 		</div>
@@ -36,7 +36,7 @@
 				</a>
 				<a href="@{PinsMindController.show(id=idea.name)}" class="title-board ${idea.status}">${idea.name}</a>
 				<div class="desc">
-					A mind map is a diagram used to visually organize information.
+					Design & program an add-on for simplifying choices in a team.
 				</div>
 			</div>
 		</div>
@@ -47,7 +47,7 @@
 
 <!-- ======================================== In Progress ========================== -->
 <div class="page-header">
-	<h2>In Progress</h2>
+	<h2>In progress</h2>
 </div>
 <div class="uiListTask">
 	<div class="row-fluid">
@@ -69,7 +69,7 @@
 
 <!-- ======================================== Backlog ========================== -->
 <div class="page-header">
-	<h2>Backlog</h2>
+	<h2>Upcoming</h2>
 </div>
 <div class="uiListTask">
 	<div class="row-fluid">
@@ -91,7 +91,7 @@
 
 <!-- ======================================== Closed ========================== -->
 <div class="page-header">
-	<h2>Closed</h2>
+	<h2>To be continued...</h2>
 </div>
 <div class="uiListTask">
 	<div class="row-fluid">

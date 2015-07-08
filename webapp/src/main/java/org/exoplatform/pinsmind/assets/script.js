@@ -1,16 +1,16 @@
 // load the mindmap
 $(document).ready(function() {
 //========= Menu ===============
-	$('#btn-pin').click(function () {
-	    $(this).jzAjax('PinsMindController.pin()', {
-	        data: {'id': 'codefest15'},
-	        success: function (data) {
-	            alert(data);
-	            tooglePin();
-	        }
-	    });
-	    return false;
-	});
+  $('#btn-pin').click(function () {
+      $(this).jzAjax('PinsMindController.pin()', {
+          data: {'id': 'codefest15'},
+          success: function (data) {
+            alert(data);
+            tooglePin();
+          }
+      });
+      return false;
+  });
 
 //========= Mindmap =================
   // enable the mindmap in the mindmap-container
@@ -57,9 +57,16 @@ $(document).ready(function() {
   window.oncontextmenu = function() {
         return false;
   };
+
+  function tooglePin() {
+    $('#btn-pin').html("<} Changed!");
+  }
+
+  $(document).click(function(event) {
+	var rightMenu = $("#menu");
+	var target = $(event.target);
+	if (rightMenu.length && !target.hasClass("pin-menu-item")){
+		rightMenu.remove();
+	}
+  });
 });
-
-function tooglePin() {
-	$('#btn-pin').html("<} Changed!");
-}
-
