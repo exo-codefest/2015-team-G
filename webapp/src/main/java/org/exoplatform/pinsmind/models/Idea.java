@@ -18,9 +18,10 @@ package org.exoplatform.pinsmind.models;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
-
-import org.exoplatform.pinsmind.models.Idea.Status;
+import java.util.Set;
 
 /**
  * Created by The eXo Platform SAS
@@ -28,27 +29,23 @@ import org.exoplatform.pinsmind.models.Idea.Status;
  *          exo@exoplatform.com
  * Jul 7, 2015  
  */
-public class Idea implements Serializable {
-
-  private String name;
-  private String description;
-  private String author;
-  private Status status;
-  private boolean isHot;
-  private String likes;
-  
+public abstract class Idea implements Serializable {
   public static enum Status{
     BACKLOG, PROGRESS, CLOSED
   }
+  private long id;
+  private String name;
+  private String description;
+  private String author;
+  private boolean isHot;
+  private Set<String> likes = new HashSet<String>();
   
-  private List<Idea> subIdeas;
-  private Idea parent;
+  private List<Idea> subIdeas = new ArrayList<Idea>();
   
   public Idea(String name, String author){
     this.name = name;
     this.author = author;
     this.isHot = false;
-    this.status = Status.BACKLOG;
   }
   
   public String getName(){
@@ -59,14 +56,6 @@ public class Idea implements Serializable {
     this.name = name;
   }
   
-  public Status getStatus(){
-    return this.status;
-  }
-  
-  public void setStatus(Status status) {
-    this.status = status;
-  }
-  
   public void toogleHot(){
     this.isHot = !this.isHot;
   }
@@ -75,31 +64,30 @@ public class Idea implements Serializable {
     return isHot;
   }
   
-  public void addSubIdea(Idea idea){
-    if (subIdeas == null){
-      subIdeas = new ArrayList<Idea>();
-      this.status = Status.PROGRESS;
-    }
-    idea.parent = this;
+  public void addSubIdea(SubIdea idea){
     this.subIdeas.add(idea);
+    idea.setParent(this);
   }
   
   public List<Idea> getSubIdeas(){
     return this.subIdeas;
   }
   
-  public boolean isRoot(){
-    return (parent== null);
-  }
-
-  public boolean isChild(){
-    return (parent != null && subIdeas != null);
-  }
-  
   public boolean isFinal(){
     return (subIdeas == null);
   }
 
-
+  public void addLike(String username){
+    this.likes.add(username);
+  }
+  
+  public Set<String> getLike(){
+    return this.likes;
+  }
+  
+  
+  public int getLikeSize(){
+    return this.likes.size();
+  }
   
 }

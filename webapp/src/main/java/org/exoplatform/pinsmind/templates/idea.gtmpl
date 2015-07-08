@@ -2,12 +2,16 @@
 #{title value=Idea/}
 #{param name=idea/}
 #{param name=mindmapHtml/}
+#{param name=top3/}
 
 <input type="hidden" id="idea-name" value="${idea.name}"/>
 <a class="btn btn-back" id="btn-back" href="@{PinsMindController.index()}" title="Back">
   <i class="uiIconReply"></i>
 </a>
-
+TOP3: 
+<% top3.each { top -> %>
+	<a href="javascript:focusToNode('${top.name}')">${top.name}<a/>
+<%}%>
 <a class="<%=idea.isHot() ? "btn addIdea btn-primary" : "btn addIdea"%>" id="btn-pin" title="Pin it">
   <i class="uiIconAttach"></i>
 </a>

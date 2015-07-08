@@ -18,13 +18,19 @@ package org.exoplatform.pinsmind.services;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
 
 import javax.inject.Singleton;
 
 import org.exoplatform.pinsmind.models.Idea;
 import org.exoplatform.pinsmind.models.Idea.Status;
+import org.exoplatform.pinsmind.models.RootIdea;
+import org.exoplatform.pinsmind.models.SubIdea;
 
 /**
  * Created by The eXo Platform SAS
@@ -36,49 +42,105 @@ import org.exoplatform.pinsmind.models.Idea.Status;
 public class IdeaService {
   
   private Map<String,Idea> fakeIdeas = new HashMap<String,Idea>();
+  //symlinks in JCR
+  private Set<Idea> hotIdeas =  new HashSet<Idea>();
   
   public IdeaService(){
     initFakeData();
   }
 
   public Idea createNewIdea(String name){
-    Idea newIdea = new Idea(name,getUser());
+    RootIdea newIdea = new RootIdea(name,getUser());
     return saveIdea(newIdea);
   }
   
-  public void addIdea(Idea parentIdea, Idea idea){
-    parentIdea.addSubIdea(idea);
-    saveIdea(parentIdea);
+  public Idea createSubIdea(String parentId, String name){
+    Idea parent = findByName(parentId);
+    SubIdea idea = new SubIdea(name, getUser());
+    parent.addSubIdea(idea);
     saveIdea(idea);
+    saveIdea(parent);
+    return idea;
   }
   
+//============ EDIT ============
+  
+  public Idea like(String ideaName){
+    Idea idea = findByName(ideaName);
+    idea.addLike(getUser());
+    //return saveIdea(idea);
+    return idea;
+  }
+  
+  public RootIdea close(String name) throws Exception{
+    try{
+      RootIdea idea = (RootIdea) findByName(name);
+      if (idea != null){
+        idea.close();
+        saveIdea(idea);
+      }
+      return idea;
+    }catch(ClassCastException e){
+      throw new Exception("Close only subject");
+    }
+  }
+  
+  public Idea update(Idea idea){
+    if (idea.isHot())
+      hotIdeas.add(idea);
+    else
+      hotIdeas.remove(idea);
+    //return saveIdea(idea);
+    return idea;
+  }
+  
+//=========== SEARCHING =========
   public Idea getIdea(String name){
     return findByName(name);
   }
   
-  public List<Idea> getHotMinds(){
-    return getFakeList();
+  public Set<Idea> getHotMinds(){
+    return hotIdeas;
   }
 
-  public List<Idea> findByStatus(Status status){
-    return getFakeList();
-  }
-  
-  public Idea close(String name){
-    Idea idea = findByName(name);
-    if (idea != null){
-      idea.setStatus(Status.CLOSED);
-      saveIdea(idea);
+  public Map<Status,List<Idea>> findAllSubjectOrderByStatus(){
+    Map<Status,List<Idea>> ideas = new HashMap<Status,List<Idea>>();
+    for (Idea i : fakeIdeas.values()){
+      if (i instanceof RootIdea){
+        Status s = ((RootIdea) i).getStatus();
+        if (ideas.get(s) == null){
+          ideas.put(s, new ArrayList<Idea>());
+        }
+        ideas.get(s).add(i);
+      }
     }
-    return idea;
+    return ideas;
   }
   
-  public Idea update(Idea idea){
-    return saveIdea(idea);
+  public LinkedList<Idea> getTop(Idea idea,int n){
+    TreeSet<Idea> ideas = getAllSubIdea(idea);
+    LinkedList<Idea> top = new LinkedList<Idea>();
+    Idea id = ideas.pollFirst();
+    while (top.size() < n && id != null){
+        top.add(id);
+        id = ideas.pollFirst();
+    }
+    return top;
   }
+  
+//=================== 
   
   private String getUser(){
     return "tao";
+  }
+  
+  private TreeSet<Idea> getAllSubIdea(Idea idea){
+    TreeSet<Idea> ideas = new TreeSet<Idea>();
+    for (Idea i : idea.getSubIdeas()){
+      ideas.add(i);
+      ideas.addAll(getAllSubIdea(i));
+    }
+    return ideas;
   }
   
   
@@ -86,9 +148,6 @@ public class IdeaService {
 
   private Idea findByName(String name){
     Idea idea = fakeIdeas.get(name);
-    if (idea == null){
-      idea = new Idea(name, "liar");
-    }
     return idea;
   }
   
@@ -98,14 +157,20 @@ public class IdeaService {
   }
   
   private void initFakeData(){
-    Idea fakeIdea = new Idea("codefest15", "liar");
-    Idea subIdea1 = new Idea("Ha","Ha");
-    Idea subsubIdea1 = new Idea("Saubeo","Ha");
+    RootIdea fakeIdea = new RootIdea("codefest15", "liar");
+    SubIdea subIdea1 = new SubIdea("Ha","Ha");
+    SubIdea subsubIdea1 = new SubIdea("Saubeo","Ha");
     subIdea1.addSubIdea(subsubIdea1);
+    saveIdea(subsubIdea1);
+    saveIdea(subIdea1);
     
-    Idea subIdea2 = new Idea("Lan","Lan");
-    Idea subIdea3 = new Idea("May","May");
-    Idea subIdea4 = new Idea("Duong","Duong");
+    SubIdea subIdea2 = new SubIdea("Lan","Lan");
+    SubIdea subIdea3 = new SubIdea("May","May");
+    SubIdea subIdea4 = new SubIdea("Duong","Duong");
+    saveIdea(subIdea2);
+    saveIdea(subIdea3);
+    saveIdea(subIdea1);
+    
     fakeIdea.addSubIdea(subIdea1);
     fakeIdea.addSubIdea(subIdea2);
     fakeIdea.addSubIdea(subIdea3);
@@ -119,5 +184,7 @@ public class IdeaService {
     ideas.addAll(fakeIdeas.values());
     return ideas;
   }
+  
+  
   
 }

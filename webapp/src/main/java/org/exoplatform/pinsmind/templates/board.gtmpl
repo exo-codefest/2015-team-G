@@ -31,6 +31,18 @@
 			</div>
 		</div>
 		
+		<div class="span3">
+			<div class="uiContentBox">
+				<a href="#" class="favorite">
+					<i class="iconStarMini"></i>
+				</a>
+				<a href="@{PinsMindController.show(id='mindmap')}" class="title-board">Mind Map</a>
+				<div class="desc">
+					A mind map is a diagram used to visually organize information.
+				</div>
+			</div>
+		</div>
+		
 		<% hotList.each { idea -> %>
 		<div class="span3 uiBox">
 			<div class="uiContentBox">

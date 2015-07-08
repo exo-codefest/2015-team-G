@@ -57,8 +57,8 @@ function Idea(name) {
 }
 
 Idea.prototype.tooglePin = function(target) {
-	$(target).jzAjax('PinsMindController.pin()', {
-        data: {'id': idea.name},
+	$(target).jzAjax('IdeaController.pin()', {
+        data: {'name': idea.name},
         success: function (data) {
         	if (data) {
         		$(target).addClass("btn-primary");
@@ -73,16 +73,38 @@ Idea.prototype.tooglePin = function(target) {
 }
 
 
-Idea.prototype.addSubIdea = function(target,callback) {
-	$(target).jzAjax('PinsMindController.pin()', {
-        data: {'id': getIdeaName(target)},
+Idea.prototype.addSubIdea = function(target,newIdea,callback) {
+	$(target).jzAjax('IdeaController.addSub()', {
+        data: {'parentId': getIdeaId(target), 'newIdeaName':newIdea},
         success: function (data) {
         	callback(target,data);
         }
     });
 }
 
-function getIdeaName(target){
+Idea.prototype.like = function(target) {
+	$(target).jzAjax('IdeaController.like()', {
+        data: {'name': idea.name},
+        success: function (data) {
+        	if (data) {
+        		$(target).addClass("btn-primary");
+            	$(target).attr("title", "Unpin it");
+           	} else {
+           		$(target).removeClass("btn-primary");
+           		$(target).attr("title", "Pin it");
+           	}
+        }
+    });
+    return false;
+}
+
+function getIdeaId(target){
 	//return $(target).html();
 	return "codefest15";
+}
+
+function focusToNode(id){
+	var liId="list-"+id;
+	alert("focus to <li id="+liId+">")
+	//focus mindmap node
 }

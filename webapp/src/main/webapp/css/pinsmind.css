@@ -1,5 +1,5 @@
 .uiIconAppPinsMindPortlet {
-  background-image: url("images/idea.jpg");
+  background-image: url("images/icon-lamb-32x32-gray.png");
   background-repeat: no-repeat;
   display: inline-block;
   height: 35px;
@@ -9,5 +9,5 @@
 }
 
 .uiIconAppPinsMindPortlet:hover {
-  background-image: url("images/idea.jpg");
+  background-image: url("images/icon-lamb-32x32-gray.png");
 }

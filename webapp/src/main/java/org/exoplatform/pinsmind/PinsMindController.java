@@ -22,6 +22,8 @@ package org.exoplatform.pinsmind;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import juzu.Mapped;
 import juzu.Path;
@@ -56,16 +58,16 @@ public class PinsMindController {
   
   @View
   public Response.Content index() {
-    List<Idea> hotList = ideaService.getHotMinds();
-    List<Idea> backlogList = ideaService.findByStatus(Status.BACKLOG);
-    List<Idea> progList = ideaService.findByStatus(Status.PROGRESS);
-    List<Idea> closedList = ideaService.findByStatus(Status.CLOSED);
-   
+    Set<Idea> hotList = ideaService.getHotMinds();
+    Map<Status,List<Idea>> ideas = ideaService.findAllSubjectOrderByStatus(); 
+    List<Idea> backlogList = ideas.get(Status.BACKLOG);
+    List<Idea> progList = ideas.get(Status.PROGRESS);
+    List<Idea> closedList = ideas.get(Status.CLOSED);
     return board.with()
-        .set("hotList",hotList)
-        .set("backlogList", backlogList)
-        .set("progList", progList)
-        .set("closedList", closedList)
+        .set("hotList", (hotList != null) ? hotList : new ArrayList<Idea>())
+        .set("backlogList", (backlogList != null) ? backlogList : new ArrayList<Idea>())
+        .set("progList", (progList != null) ? progList : new ArrayList<Idea>())
+        .set("closedList", (closedList != null) ? closedList : new ArrayList<Idea>())
         .ok()
         .withAssets("mindboard-js");
   }
@@ -77,6 +79,7 @@ public class PinsMindController {
     return ideaPage.with()
         .set("idea", idea)
         .set("mindmapHtml",generateHtml(idea))
+        .set("top3", ideaService.getTop(idea, 3))
         .ok()
         .withAssets("raphaelmin","jsmindmap","idea-js","mindmap-css");
   }
@@ -93,23 +96,6 @@ public class PinsMindController {
     }
   }
 
-  @Resource
-  @Ajax
-  @Route("/pin/{name}")
-  public Response pin(String id) {
-    Idea idea = ideaService.getIdea(id);
-    if (idea != null) {
-      idea.toogleHot();
-      ideaService.update(idea);
-      String data = idea.isHot()? "Pinned" : "";
-      return Response.ok(data);
-    } else {
-      return Response.status(500);
-    }
-  }
-  
-
-  
   private String getCurrentUser(SecurityContext context) {
     Principal user = context.getUserPrincipal();
     if (user == null) {
