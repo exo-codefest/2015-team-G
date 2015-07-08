@@ -70,7 +70,6 @@
     if (opts.url) {
       this.url = opts.url;
     }
-
     // create the element for display
     this.el = $('<a id="'+this.href+'" href="' + this.href + '">' + this.name + '</a>').addClass('node');
     $('#mindmap-container').prepend(this.el);

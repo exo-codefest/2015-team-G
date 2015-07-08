@@ -98,8 +98,8 @@ public class PinsMindController {
 
   private String generateHtml(Idea idea,String username){
     StringBuilder html = new StringBuilder();
-    String liked = idea.getLike().contains(username) ? "liked" : "";
-    html.append("<li><a class=\""+liked+"\" href=\""+idea.getId()+"\" id=\""+idea.getId()+"\">");
+    String color = idea.getLike().contains(username) ? "red" : "";
+    html.append("<li><a style=\"color:"+color+"\" href=\""+idea.getId()+"\" id=\""+idea.getId()+"\">");
     html.append(idea.getName());
     html.append("</a>");
     List<Idea> subIdeas = idea.getSubIdeas();

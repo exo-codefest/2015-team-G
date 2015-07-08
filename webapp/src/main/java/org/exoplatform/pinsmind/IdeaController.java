@@ -64,6 +64,7 @@ public class IdeaController {
   @Route("/idea/like/{id}")
   public Response like(String id, SecurityContext context) {
     Idea idea = ideaService.like(id, context);
+    System.out.println(idea.getLikeSize());
     return Response.ok(idea.getLikeSize()+"");
   }
   

@@ -84,8 +84,7 @@ public class IdeaService {
   public Idea like(String id, SecurityContext context){
     Idea idea = findById(id);
     idea.addLike(getCurrentUser(context));
-    //return saveIdea(idea);
-    return idea;
+    return saveIdea(idea);
   }
   
   public RootIdea close(String id) throws Exception{
@@ -195,7 +194,9 @@ public class IdeaService {
     SubIdea subIdea6 = new SubIdea(UUID.randomUUID().toString(), "Share knowledge","Vu Nguyen");
     saveIdea(subIdea2);
     saveIdea(subIdea3);
-    saveIdea(subIdea1);
+    saveIdea(subIdea4);
+    saveIdea(subIdea5);
+    saveIdea(subIdea6);
 
     fakeIdea.addSubIdea(subIdea1);
     fakeIdea.addSubIdea(subIdea2);
