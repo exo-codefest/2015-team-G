@@ -50,19 +50,17 @@ Nguyễn Thị Lan | DOC
 
  <img src="images/newtopicform.png" />
  
-**Step 3**. Fill essential information in this form and click Add button, the new topic will be displayed:
-
- <img src="images/exhibitiontopic.png" />
+Fill essential information in this form and click Add button, the new topic will be displayed.
  
-**Step 4**. Click on the topic you want to edit, you will be redirected to the diagram screen with the root node only:
+**Step 3**. Click on the topic you want to edit, you will be redirected to the diagram screen with the root node only:
 
 <img src="images/rootnode.png" />
 
-**Step 5**. Right-click on the root node to access menu bar:
+**Step 4**. Right-click on the root node to access menu bar:
 
 <img src="images/menubar.png" />
 
-**Step 6**. Select Add node to add new sub ideas:
+**Step 5**. Select Add node to add new sub ideas:
 
 <img src="images/nodedemo.png" />
 
@@ -73,7 +71,7 @@ or Edit node to edit the node content:
 Press Enter key to accept changes.
 Or Remove node to delete the selected node. This node and its children will be deleted.
 
-**Step 7**. Besides, you can click on any node to move focusing on this node , its parent as well as its children
+**Step 6**. Besides, you can click on any node to move focusing on this node , its parent as well as its children
 
 <img src="images/focusnode.png" />
 
@@ -85,3 +83,5 @@ In addition, this tool provides "hot ideas" function to allow keeping up the deb
 
 - Voting: allow members to vote for all ideas
 - Graphics design: provide more responsive and attractive design to increase user experience
+- Notification: enable sending notifications to members when the administrator makes a call for voting
+- Import/export ideas tree: quickly import and export the ideas tree under a specific data format
