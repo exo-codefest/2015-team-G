@@ -6,7 +6,10 @@
 #{param name=closedList/}
 
 <div>
-	<span style="font-style: italic; font-size: 14px;">Don't keep your ideas in mind!</span>
+	<span style="font-style: italic; font-size: 14px;">
+		Don't keep your ideas in mind!
+	</span>
+	<a href="#" id="information"><i class="uiIconInformation" data-toggle="modal" data-target="#introductionModal"></i></a>
 	<a id="newIdeaButton" class="btn addIdea" data-toggle="modal" data-target="#newIdeaModal">
 		<i class="uiIconAddIcon"></i> New Idea
 	</a>
@@ -150,3 +153,10 @@
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+
+
+#{include path="fragment_introduction.gtmpl"/}
+
+<script>
+//$('#introductionModal').modal();
+</script>
