@@ -6,39 +6,9 @@
         <h4 class="modal-title">Help</h4>
       </div>
       <div class="modal-body">
-		<img src="css/image/idea-bg-blue.jpeg"/>
-		
-		
-		<!-- DOCUMENTATION -->
-		.hero-unit.mini {
-  padding: 30px;
-}
-.hero-unit.mini > h1 {
-  margin-top: 0;
-  font-size: 40px;
-}
-.progress .bar {
-  line-height: 18px;
-}
-.overviewTask {
-  position: relative;
-}
-.overviewTask .close {
-  position: absolute;
-  right: 10px;
-  top: 5px;
-}
-.overviewTask h4 {
-  font-weight: normal;
-}
-.overviewTask h4 > b {
-  color: #2f5e92;
-}
-.overviewTask h4 > a {
-  font-size: 14px;
-  font-weight: bold;
-}
-		
+		This add-on shall facilitate brainstorming process between team members and allow voting to select great ideas effectively and efficiently.
+		<img src="css/images/overview.jpg"/>
+			
       </div>
       <div class="modal-footer">
       Created by team 4.PINS - eXo Codefest2015
