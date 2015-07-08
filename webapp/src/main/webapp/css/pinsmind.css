@@ -8,6 +8,10 @@
   width: 35px;
 }
 
-.uiIconAppPinsMindPortlet:hover {
+li.active .uiIconAppPinsMindPortlet {
+  background-image: url("images/icon-lamb-32x32-white.png") !important;
+}
+
+li>a:hover .uiIconAppPinsMindPortlet {
   background-image: url("images/icon-lamb-32x32-gray.png");
 }

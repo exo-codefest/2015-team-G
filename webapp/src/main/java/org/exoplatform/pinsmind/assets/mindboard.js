@@ -2,15 +2,6 @@
 	$(document).ready(function () {
 		$('#btn-submit').click(function () {
 			$('#addNewIdeaForm').submit();
-			/*var name = $("#newIdeaModal #idea").val();
-			var desc = $("#newIdeaModal #description").val();
-	    $(this).jzAjax('PinsMindController.createNew()', {
-	        data: {'name': name, "description": desc},
-	        success: function (data) {
-	          ;
-	        }
-	    });
-	    return false;*/
 		});
 
 		$('#newIdeaButton').click(function () {

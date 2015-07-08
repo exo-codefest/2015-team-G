@@ -26,13 +26,10 @@ import java.util.Map;
 import java.util.Set;
 
 import juzu.Action;
-import juzu.Mapped;
 import juzu.Path;
-import juzu.Resource;
 import juzu.Response;
 import juzu.Route;
 import juzu.View;
-import juzu.plugin.ajax.Ajax;
 import juzu.request.SecurityContext;
 import juzu.template.Template;
 
@@ -41,7 +38,6 @@ import javax.inject.Inject;
 import org.exoplatform.pinsmind.models.Idea;
 import org.exoplatform.pinsmind.models.Idea.Status;
 import org.exoplatform.pinsmind.services.IdeaService;
-import org.json.JSONObject;
 
 public class PinsMindController {
 
@@ -85,14 +81,11 @@ public class PinsMindController {
         .withAssets("raphaelmin","jsmindmap","idea-js","mindmap-css");
   }
   
-  @View
-  public Response.Content createNew(String name, String description) {
+  @Action
+  @Route("/add")
+  public Response createNew(String name, String description) {
     Idea idea = ideaService.createNewIdea(name, description);
-    return ideaPage.with()
-                   .set("idea", idea)
-                   .set("mindmapHtml", generateHtml(idea))
-                   .ok()
-                   .withAssets("raphaelmin","jsmindmap","idea-js","mindmap-css");
+    return PinsMindController_.show(idea.getId());
   }
 
   private String getCurrentUser(SecurityContext context) {
