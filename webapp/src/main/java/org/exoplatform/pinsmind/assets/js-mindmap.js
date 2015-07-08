@@ -55,8 +55,8 @@
 (function ($) {
   'use strict';
 
-  var TIMEOUT = 4,  // movement timeout in seconds
-    CENTRE_FORCE = 3,  // strength of attraction to the centre by the active node
+  var TIMEOUT = 3,  // movement timeout in seconds
+    CENTRE_FORCE = 4,  // strength of attraction to the centre by the active node
     Node,
     Line;
 
@@ -132,15 +132,17 @@
 	this.el.bind('contextmenu', function(e) {
 		$("#menu").remove();
 		var position = $(this).position();
-		var txt="<div id=\"menu\" style=\"position: absolute; z-index: 115; top:"+(position.top+40)+"px; left:"+(position.left+50)+"px\"><ul class=\"dropdown-menu menu-node\"><li id=\"add-node-button\" class=\"pin-menu-item\"><a><i class=\"uiIconAddIcon\"></i> Add</a></li><li class=\"pin-menu-item\"><a><i class=\"uiIconEdit\"></i> Edit</a></li><li id=\"remove-node-button\" class=\"pin-menu-item\"><a><i class=\"uiIconMinus\"></i> Remove</a></li><li class=\"pin-menu-item\"><a><i class=\"uiIconThumbUp\"></i> Vote</a></li></ul></div>";
+		var txt="<div id=\"menu\" style=\"position: absolute; z-index: 115; top:"+(position.top+40)+"px; left:"+(position.left+50)+"px\"><ul class=\"dropdown-menu menu-node\"><li id=\"add-node-button\" class=\"pin-menu-item\"><a><i class=\"uiIconAddIcon\"></i> Add</a></li><li id=\"edit-node-button\" class=\"pin-menu-item\"><a><i class=\"uiIconEdit\"></i> Edit</a></li><li id=\"remove-node-button\" class=\"pin-menu-item\"><a><i class=\"uiIconMinus\"></i> Remove</a></li><li class=\"pin-menu-item\"><a><i class=\"uiIconThumbUp\"></i> Vote</a></li></ul></div>";
 		$('#mindmap-container').prepend(txt);
 		$('#remove-node-button').bind('click', function (e){
 			thisnode.removeNode();
 			thisnode.animateToStatic();
+			$('#menu').hide();
 		});
 		$('#add-node-button').bind('click', function (e){
 			$('#mindmap-container').addNode(thisnode,"test",thisnode.options);
 			thisnode.animateToStatic();
+			$('#menu').hide();
 		});
 	});
   };
