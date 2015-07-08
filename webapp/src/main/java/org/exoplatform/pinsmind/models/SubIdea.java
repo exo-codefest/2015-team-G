@@ -43,7 +43,7 @@ public class SubIdea extends Idea implements Comparable<SubIdea>{
   @Override
   public void addLike(String username){
     removeFromParent(username);
-    this.addLike(username);
+    super.addLike(username);
   }
   
   private boolean removeFromParent(String username){
@@ -58,7 +58,7 @@ public class SubIdea extends Idea implements Comparable<SubIdea>{
 
   public int compareTo(SubIdea idea){
     if (this.getLikeSize() == idea.getLikeSize()){
-      return this.getName().compareTo(idea.getName());
+      return idea.getName().compareTo(this.getName());
     }
     return (this.getLikeSize() < idea.getLikeSize()) ? -1 : 1;
   }

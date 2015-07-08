@@ -72,7 +72,7 @@
     }
 
     // create the element for display
-    this.el = $('<a href="' + this.href + '">' + this.name + '</a>').addClass('node');
+    this.el = $('<a id="'+this.href+'" href="' + this.href + '">' + this.name + '</a>').addClass('node');
     $('#mindmap-container').prepend(this.el);
 
     if (!parent) {
@@ -135,7 +135,8 @@
 		$(this).addClass("pin-clicked");
 		$("#menu").remove();
 		var position = $(this).position();
-		var txt="<div id=\"menu\" style=\"position: absolute; z-index: 115; top:"+(position.top+40)+"px; left:"+(position.left+50)+"px\"><ul class=\"dropdown-menu menu-node\"><li id=\"add-node-button\" class=\"pin-menu-item\"><a><i class=\"uiIconAddIcon\"></i> Add</a></li><li id=\"edit-node-button\" class=\"pin-menu-item\"><a><i class=\"uiIconEdit\"></i> Edit</a></li><li id=\"remove-node-button\" class=\"pin-menu-item\"><a><i class=\"uiIconMinus\"></i> Remove</a></li><li class=\"pin-menu-item\"><a><i class=\"uiIconThumbUp\"></i> Vote</a></li></ul></div>";
+		var nodeId = $(this).attr("id");
+		var txt="<div id=\"menu\" style=\"position: absolute; z-index: 115; top:"+(position.top+40)+"px; left:"+(position.left+50)+"px\"><ul class=\"dropdown-menu menu-node\"><li id=\"add-node-button\" class=\"pin-menu-item\"><a><i class=\"uiIconAddIcon\"></i> Add</a></li><li id=\"edit-node-button\" class=\"pin-menu-item\"><a><i class=\"uiIconEdit\"></i> Edit</a></li><li id=\"remove-node-button\" class=\"pin-menu-item\"><a><i class=\"uiIconMinus\"></i> Remove</a></li><li id=\"vote-node-button\" class=\"pin-menu-item\"><a><i class=\"uiIconThumbUp\"></i> Vote</a></li></ul></div>";
 		$('#mindmap-container').prepend(txt);
 		$('#remove-node-button').bind('click', function (e){
 			thisnode.removeNode();
@@ -146,7 +147,14 @@
 			$('#mindmap-container').addNode(thisnode,"test",thisnode.options);
 			thisnode.animateToStatic();
 			$('#menu').remove();
-			
+		});
+		
+		$('#vote-node-button').bind('click', function (e){
+			idea.like(nodeId, function(data){
+				//alert("liked "+data);
+				$("#"+nodeId).css("color","blue");
+			});
+			$('#menu').remove();
 		});
 		$('#edit-node-button').bind('click', function (e){
 			var position = $('#menu').position();

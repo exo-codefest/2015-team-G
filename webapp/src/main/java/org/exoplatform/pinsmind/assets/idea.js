@@ -81,29 +81,17 @@ Idea.prototype.addSubIdea = function(target,newIdea,callback) {
     });
 }
 
-Idea.prototype.like = function(target) {
-	$(target).jzAjax('IdeaController.like()', {
-        data: {'name': idea.name},
-        success: function (data) {
-        	if (data) {
-        		$(target).addClass("btn-primary");
-            	$(target).attr("title", "Unpin it");
-           	} else {
-           		$(target).removeClass("btn-primary");
-           		$(target).attr("title", "Pin it");
-           	}
+Idea.prototype.like = function(nodeId,callback) {
+	$("#"+nodeId).jzAjax('IdeaController.like()', {
+        data: {'id': nodeId},
+        success: function(data) {
+        	callback(data);
         }
     });
     return false;
 }
 
-function getIdeaId(target){
-	//return $(target).html();
-	return "codefest15";
-}
-
 function focusToNode(id){
-	var liId="list-"+id;
-	alert("focus to <li id="+liId+">")
+	alert("focus to <li id="+id+">")
 	//focus mindmap node
 }

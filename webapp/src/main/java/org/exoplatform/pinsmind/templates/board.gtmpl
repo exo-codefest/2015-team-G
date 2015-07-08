@@ -22,7 +22,6 @@
 
 <div class="uiListTask">
 	<div class="row-fluid">
-
 		<% hotList.each { idea -> %>
 		<div class="span3 uiBox">
 			<div class="uiContentBox">

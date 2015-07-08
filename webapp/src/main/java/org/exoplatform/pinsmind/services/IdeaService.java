@@ -16,6 +16,7 @@
  */
 package org.exoplatform.pinsmind.services;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -26,12 +27,16 @@ import java.util.Set;
 import java.util.TreeSet;
 import java.util.UUID;
 
+import javax.inject.Inject;
 import javax.inject.Singleton;
+
+import juzu.request.SecurityContext;
 
 import org.exoplatform.pinsmind.models.Idea;
 import org.exoplatform.pinsmind.models.Idea.Status;
 import org.exoplatform.pinsmind.models.RootIdea;
 import org.exoplatform.pinsmind.models.SubIdea;
+import org.exoplatform.services.security.ConversationState;
 
 /**
  * Created by The eXo Platform SAS
@@ -42,24 +47,32 @@ import org.exoplatform.pinsmind.models.SubIdea;
 @Singleton
 public class IdeaService {
   
+  //private ConversationState state;
+  
   private Map<String,Idea> fakeIdeas = new HashMap<String,Idea>();
   //symlinks in JCR
   private Set<Idea> hotIdeas =  new HashSet<Idea>();
   
+  /*
+  public IdeaService(ConversationState state){
+    this.state = state;
+    initFakeData();
+  }*/
   public IdeaService(){
     initFakeData();
   }
+  
 
-  public Idea createNewIdea(String name, String description){
+  public Idea createNewIdea(String name, String description, SecurityContext context){
     String id = UUID.randomUUID().toString();
-    RootIdea newIdea = new RootIdea(id, name, getUser());
+    RootIdea newIdea = new RootIdea(id, name, getCurrentUser(context));
     newIdea.setDescription(description);
     return saveIdea(newIdea);
   }
   
-  public Idea createSubIdea(String parentId, String name){
+  public Idea createSubIdea(String parentId, String name, SecurityContext context){
     Idea parent = findById(parentId);
-    SubIdea idea = new SubIdea(UUID.randomUUID().toString(), name, getUser());
+    SubIdea idea = new SubIdea(UUID.randomUUID().toString(), name, getCurrentUser(context));
     parent.addSubIdea(idea);
     saveIdea(idea);
     saveIdea(parent);
@@ -68,9 +81,9 @@ public class IdeaService {
   
 //============ EDIT ============
   
-  public Idea like(String id){
+  public Idea like(String id, SecurityContext context){
     Idea idea = findById(id);
-    idea.addLike(getUser());
+    idea.addLike(getCurrentUser(context));
     //return saveIdea(idea);
     return idea;
   }
@@ -123,18 +136,24 @@ public class IdeaService {
   public LinkedList<Idea> getTop(Idea idea,int n){
     TreeSet<Idea> ideas = getAllSubIdea(idea);
     LinkedList<Idea> top = new LinkedList<Idea>();
-    Idea id = ideas.pollFirst();
+    Idea id = ideas.pollLast();
     while (top.size() < n && id != null){
         top.add(id);
-        id = ideas.pollFirst();
+        id = ideas.pollLast();
     }
     return top;
   }
   
 //=================== 
   
-  private String getUser(){
-    return "tao";
+  private String getCurrentUser(SecurityContext context) {
+    //return state.getCurrent().getIdentity().getUserId());
+    Principal user = context.getUserPrincipal();
+    if (user == null) {
+      return "Anonymous";
+    } else {
+      return user.getName();
+    }
   }
   
   private TreeSet<Idea> getAllSubIdea(Idea idea){

@@ -46,9 +46,9 @@ public class IdeaController {
   
   @Resource
   @Ajax
-  @Route("/idea/pin/{name}")
-  public Response pin(String name) {
-    Idea idea = ideaService.getIdea(name);
+  @Route("/idea/pin/{id}")
+  public Response pin(String id) {
+    Idea idea = ideaService.getIdea(id);
     if (idea != null) {
       idea.toogleHot();
       ideaService.update(idea);
@@ -62,9 +62,9 @@ public class IdeaController {
   @Resource
   @Ajax
   @Route("/idea/like/{id}")
-  public Response like(String id) {
-    Idea idea = ideaService.like(id);
-    return Response.ok(new JSONObject(idea).toString()).withMimeType("text/json");
+  public Response like(String id, SecurityContext context) {
+    Idea idea = ideaService.like(id, context);
+    return Response.ok(idea.getLikeSize()+"");
   }
   
   @Resource
@@ -81,8 +81,8 @@ public class IdeaController {
   @Resource
   @Ajax
   @Route("/idea/addSub")
-  public Response addSub(String parentId, String newIdeaName){
-    Idea idea = ideaService.createSubIdea(parentId, newIdeaName);
+  public Response addSub(String parentId, String newIdeaName, SecurityContext context){
+    Idea idea = ideaService.createSubIdea(parentId, newIdeaName, context);
     return Response.ok(new JSONObject(idea).toString()).withMimeType("text/json");
   }
 

@@ -70,11 +70,11 @@ public class PinsMindController {
   }
   
   @View
-  public Response.Content show(String id) {
+  public Response.Content show(String id, SecurityContext context) {
     Idea idea = ideaService.getIdea(id);
     return ideaPage.with()
         .set("idea", idea)
-        .set("mindmapHtml",generateHtml(idea))
+        .set("mindmapHtml",generateHtml(idea,getCurrentUser(context)))
         .set("top3", ideaService.getTop(idea, 3))
         .ok()
         .withAssets("raphaelmin","jsmindmap","idea-js","mindmap-css");
@@ -82,8 +82,8 @@ public class PinsMindController {
   
   @Action
   @Route("/add")
-  public Response createNew(String name, String description) {
-    Idea idea = ideaService.createNewIdea(name, description);
+  public Response createNew(String name, String description, SecurityContext context) {
+    Idea idea = ideaService.createNewIdea(name, description,context);
     return PinsMindController_.show(idea.getId());
   }
 
@@ -96,16 +96,17 @@ public class PinsMindController {
     }
   }
 
-  private String generateHtml(Idea idea){
+  private String generateHtml(Idea idea,String username){
     StringBuilder html = new StringBuilder();
-    html.append("<li id=\"list-"+idea.getId()+"\"><a href=\"#\">");
+    String liked = idea.getLike().contains(username) ? "liked" : "";
+    html.append("<li><a class=\""+liked+"\" href=\""+idea.getId()+"\" id=\""+idea.getId()+"\">");
     html.append(idea.getName());
     html.append("</a>");
     List<Idea> subIdeas = idea.getSubIdeas();
     if (subIdeas != null){
       html.append("<ul>");
         for (Idea subIdea : subIdeas){
-          html.append(generateHtml(subIdea));
+          html.append(generateHtml(subIdea,username));
         }
       html.append("</ul>");
     }
