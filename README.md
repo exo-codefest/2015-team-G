@@ -24,6 +24,7 @@ Nguyễn Thị Lan | DOC
 * Purposes:  Facilitate brainstorming process between team members and allow voting to select great ideas effectively and efficiently
 
 * Preface: Due to the limitations of human resource and time, our add-on only stops at basic functions, the potential perspectives will be provided for future improvements. Our team are happy to receive your comments and suggestions, so please feel free to give us some feedback!
+* Acknowledgement: We are grateful to Kenneth Kufluk (https://github.com/kennethkufluk) for providing his free js-mindmap library under the repository: https://github.com/kennethkufluk/js-mindmap. We have modified the original source code to fit in eXo Platform.
 
 # Definitions:
 
